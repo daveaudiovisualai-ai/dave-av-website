@@ -3,7 +3,7 @@
 A single-page static site. Open `index.html` in a browser, or upload the folder to any static host (Netlify, Vercel, GitHub Pages, cPanel).
 
 ## Swap in your own hero video
-The hero currently plays your YouTube Short. To change it, edit `var YT_ID = '...'` in the script near the bottom of index.html (the part after `/shorts/` or `?v=` in the YouTube link). Set it to `''` to use a local file instead:
+To play a YouTube video in the hero, edit `var YT_ID = '...'` in the script near the bottom of index.html (the part after `/shorts/` or `?v=` in the YouTube link). Set it to `''` to use a local file instead:
 
 1. Export a short loop (10–30 s, no sound needed, 1920×1080, under ~8 MB).
 2. Save it as `assets/hero.mp4` (optional extra: `assets/hero.webm`).
