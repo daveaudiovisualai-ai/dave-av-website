@@ -122,7 +122,10 @@ section { padding-block: clamp(80px, 11vw, 140px); }
 .steps li.on { color: var(--text); border-color: var(--cyan); }
 .steps li.on b { color: var(--cyan); }
 .scene { width: 100%; height: auto; display: block; overflow: hidden; }
-.scene .wall-tile { transition: fill .4s; }
+.scene .wave { animation: wave 1.4s ease-out infinite; }
+.scene .wave.w2 { animation-delay: .2s; }
+.scene .wave.w3 { animation-delay: .4s; }
+@keyframes wave { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; } }
 @media (max-width: 860px) {
   .delivery-grid { grid-template-columns: 1fr; }
   .delivery-pin { padding-block: 80px 40px; }
@@ -260,44 +263,78 @@ footer .logo-mark { height: 34px; }
           <span class="eyebrow">How we deliver</span>
           <h2 style="margin-top:16px">From Dubai to your site</h2>
           <ol class="steps" id="steps">
-            <li class="on"><b>01 · Engineer</b><span>AI designs, simulates and documents the system in Dubai.</span></li>
-            <li><b>02 · Ship</b><span>Kit from our partner brands is consolidated and shipped.</span></li>
-            <li><b>03 · Install</b><span>A local integrator installs to our drawings, with us on call.</span></li>
-            <li><b>04 · Commission</b><span>We tune, test and monitor remotely from Dubai.</span></li>
+            <li class="on"><b>01 · Deliver</b><span>A pre-built, tested 47U rack arrives on site in its crate.</span></li>
+            <li><b>02 · Inside the rack</b><span>Every device is specified and configured with AI in Dubai.</span></li>
+            <li><b>03 · Install</b><span>LED wall, touch globe, kiosk and speakers connect back to the rack.</span></li>
+            <li><b>04 · Commission</b><span>We tune, test and monitor the whole system from Dubai.</span></li>
           </ol>
         </div>
-        <svg class="scene" id="scene" viewBox="0 0 900 520" role="img" aria-label="A forklift delivers a DAVE flight case; the kit inside assembles into a working LED wall with speakers">
+        <svg class="scene" id="scene" viewBox="0 0 900 520" role="img" aria-label="A forklift delivers a 47U equipment rack; its equipment lights up, then an LED wall, a touch globe, a kiosk and speakers are connected from the rack">
           <defs>
-            <linearGradient id="wallGlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e5e5"/><stop offset="1" stop-color="#0a4a5a"/></linearGradient>
+            <linearGradient id="wallLit" gradientUnits="userSpaceOnUse" x1="230" y1="24" x2="670" y2="156"><stop offset="0" stop-color="#00e5e5"/><stop offset=".55" stop-color="#0a8a96"/><stop offset="1" stop-color="#0a3a48"/></linearGradient>
+            <radialGradient id="globeLit" cx=".38" cy=".35" r=".75"><stop offset="0" stop-color="#9ff"/><stop offset=".45" stop-color="#00e5e5"/><stop offset="1" stop-color="#064652"/></radialGradient>
+            <linearGradient id="kioskLit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00e5e5"/><stop offset="1" stop-color="#0a4a5a"/></linearGradient>
             <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#22313e" stroke-width="1"/></pattern>
           </defs>
-          <rect x="0" y="0" width="900" height="460" fill="url(#grid)" opacity=".5"/>
+          <rect x="0" y="0" width="900" height="460" fill="url(#grid)" opacity=".45"/>
           <line x1="0" y1="460" x2="900" y2="460" stroke="#95a3ad" stroke-width="2"/>
-          <text x="20" y="490" fill="#95a3ad" font-family="IBM Plex Mono, monospace" font-size="13" letter-spacing="2" id="sceneLabel">DXB · ENGINEERED WITH AI</text>
+          <text x="20" y="492" fill="#95a3ad" font-family="IBM Plex Mono, monospace" font-size="13" letter-spacing="2" id="sceneLabel">ON SITE · PRE-BUILT 47U RACK ARRIVES</text>
 
-          <!-- Video wall frame (assembles from tiles) -->
-          <g id="wall">
-            <rect x="452" y="76" width="376" height="214" fill="none" stroke="#22313e" stroke-width="2" stroke-dasharray="6 6"/>
-            <g id="tiles"></g>
-            <g id="wallContent" opacity="0">
-              <text x="640" y="196" text-anchor="middle" fill="#0a0f14" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="800" font-size="72" letter-spacing="6">DAVE</text>
-            </g>
-            <rect x="630" y="290" width="20" height="170" fill="#22313e"/>
+          <!-- Cables from the rack to each device -->
+          <g id="cables" fill="none" stroke="#00e5e5" stroke-width="2">
+            <path class="cable" d="M418 456 H112"/>
+            <path class="cable" d="M424 450 H270 V440"/>
+            <path class="cable" d="M476 450 H640 V452"/>
+            <path class="cable" d="M482 456 H788"/>
+            <path class="cable" d="M450 160 V156"/>
           </g>
 
-          <!-- Speakers -->
-          <g id="spkL"><rect x="400" y="120" width="34" height="140" rx="4" fill="#142231" stroke="#95a3ad"/><circle cx="417" cy="160" r="9" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="417" cy="200" r="9" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="417" cy="240" r="9" fill="none" stroke="#00e5e5" stroke-width="2"/></g>
-          <g id="spkR"><rect x="846" y="120" width="34" height="140" rx="4" fill="#142231" stroke="#95a3ad"/><circle cx="863" cy="160" r="9" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="863" cy="200" r="9" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="863" cy="240" r="9" fill="none" stroke="#00e5e5" stroke-width="2"/></g>
-          <path id="cable" d="M640 460 C 640 420, 520 430, 417 262 M640 460 C 640 420, 760 430, 863 262" fill="none" stroke="#00e5e5" stroke-width="2" stroke-dasharray="600" stroke-dashoffset="600"/>
-          <g id="waves" opacity="0" fill="none" stroke="#00e5e5" stroke-width="2"><path d="M390 175 q-10 15 0 30"/><path d="M378 165 q-18 25 0 50"/><path d="M890 175 q10 15 0 30"/></g>
+          <!-- LED wall: tight tiles, no gaps -->
+          <g id="ledWall">
+            <rect x="230" y="24" width="440" height="132" fill="none" stroke="#22313e" stroke-width="1.5" stroke-dasharray="5 5"/>
+            <g id="tiles"></g>
+            <g id="wallContent" opacity="0">
+              <text x="450" y="100" text-anchor="middle" fill="#0a0f14" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="800" font-size="64" letter-spacing="8">DAVE</text>
+              <text x="450" y="128" text-anchor="middle" fill="#0a0f14" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="4">AI-ENGINEERED AV · DUBAI</text>
+            </g>
+          </g>
 
-          <!-- Flight case (lid opens) -->
-          <g id="case">
-            <rect x="-90" y="-62" width="180" height="62" fill="#142231" stroke="#ffffff" stroke-width="2"/>
-            <rect x="-90" y="-62" width="14" height="14" fill="#00e5e5"/><rect x="76" y="-62" width="14" height="14" fill="#00e5e5"/>
-            <rect x="-90" y="-14" width="14" height="14" fill="#00e5e5"/><rect x="76" y="-14" width="14" height="14" fill="#00e5e5"/>
-            <text x="0" y="-25" text-anchor="middle" fill="#ffffff" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="800" font-size="22" letter-spacing="3">DAVE · AV</text>
-            <g id="lid"><rect x="-90" y="-80" width="180" height="18" fill="#101922" stroke="#ffffff" stroke-width="2"/></g>
+          <!-- Speakers, touch globe, kiosk -->
+          <g id="spkL" class="dev">
+            <rect x="92" y="330" width="40" height="130" rx="3" fill="#142231" stroke="#ffffff" stroke-width="2"/>
+            <circle cx="112" cy="352" r="7" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="112" cy="384" r="12" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="112" cy="424" r="14" fill="none" stroke="#00e5e5" stroke-width="2"/>
+          </g>
+          <g id="globeDev" class="dev">
+            <rect x="252" y="356" width="36" height="104" fill="#142231" stroke="#ffffff" stroke-width="2"/>
+            <rect x="238" y="452" width="64" height="8" fill="#ffffff"/>
+            <circle cx="270" cy="310" r="46" fill="#142231" stroke="#ffffff" stroke-width="2"/>
+            <circle id="globeGlow" cx="270" cy="310" r="45" fill="url(#globeLit)" opacity="0"/>
+            <g fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1"><ellipse cx="270" cy="310" rx="20" ry="46"/><ellipse cx="270" cy="310" rx="38" ry="46"/><ellipse cx="270" cy="310" rx="46" ry="16"/></g>
+          </g>
+          <g id="kiosk" class="dev">
+            <rect x="600" y="452" width="80" height="8" fill="#ffffff"/>
+            <rect x="634" y="330" width="12" height="122" fill="#142231" stroke="#ffffff" stroke-width="2"/>
+            <rect x="606" y="218" width="68" height="114" rx="6" fill="#142231" stroke="#ffffff" stroke-width="2"/>
+            <g id="kioskScreen" opacity="0"><rect x="612" y="224" width="56" height="102" rx="3" fill="url(#kioskLit)"/><rect x="620" y="236" width="40" height="6" fill="#0a0f14" opacity=".6"/><rect x="620" y="250" width="28" height="4" fill="#0a0f14" opacity=".4"/><circle cx="640" cy="290" r="14" fill="none" stroke="#0a0f14" stroke-width="3" opacity=".6"/></g>
+          </g>
+          <g id="spkR" class="dev">
+            <rect x="768" y="330" width="40" height="130" rx="3" fill="#142231" stroke="#ffffff" stroke-width="2"/>
+            <circle cx="788" cy="352" r="7" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="788" cy="384" r="12" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="788" cy="424" r="14" fill="none" stroke="#00e5e5" stroke-width="2"/>
+          </g>
+          <g id="waves" opacity="0" fill="none" stroke="#00e5e5" stroke-width="2" stroke-linecap="round">
+            <path class="wave" d="M84 372 q-10 22 0 44"/><path class="wave w2" d="M72 362 q-20 32 0 64"/><path class="wave w3" d="M60 352 q-30 42 0 84"/>
+            <path class="wave" d="M816 372 q10 22 0 44"/><path class="wave w2" d="M828 362 q20 32 0 64"/><path class="wave w3" d="M840 352 q30 42 0 84"/>
+          </g>
+
+          <!-- 47U rack (built in script) -->
+          <g id="rack"><g id="rackBody"></g><g id="rackLabels"></g>
+            <g id="crate">
+              <rect x="-68" y="-318" width="136" height="316" fill="#1b2a35" stroke="#ffffff" stroke-width="2"/>
+              <g stroke="#2e4250" stroke-width="2"><line x1="-68" y1="-250" x2="68" y2="-250"/><line x1="-68" y1="-180" x2="68" y2="-180"/><line x1="-68" y1="-110" x2="68" y2="-110"/><line x1="-68" y1="-40" x2="68" y2="-40"/><line x1="-68" y1="-318" x2="68" y2="-2"/></g>
+              <rect x="-68" y="-318" width="136" height="12" fill="#00e5e5"/><rect x="-68" y="-14" width="136" height="12" fill="#00e5e5"/>
+              <text x="0" y="-150" text-anchor="middle" fill="#ffffff" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="800" font-size="30" letter-spacing="4">DAVE</text>
+              <text x="0" y="-128" text-anchor="middle" fill="#95a3ad" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2">47U · THIS WAY UP</text>
+            </g>
           </g>
 
           <!-- Forklift -->
@@ -669,60 +706,108 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
     gsap.to(o, { n: end, duration: 1.6, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true }, onUpdate: function () { set(Math.round(o.n)); } });
   });
 
-  /* ---------- Delivery scene ---------- */
-  var tilesG = document.getElementById('tiles'), NS = 'http://www.w3.org/2000/svg', tiles = [];
-  for (var r = 0; r < 3; r++) for (var c = 0; c < 4; c++) {
-    var tEl = document.createElementNS(NS, 'rect');
-    tEl.setAttribute('x', 456 + c * 92); tEl.setAttribute('y', 80 + r * 69); tEl.setAttribute('width', 88); tEl.setAttribute('height', 65);
-    tEl.setAttribute('fill', '#142231'); tEl.setAttribute('stroke', '#00e5e5'); tEl.setAttribute('stroke-width', '1');
-    tEl.setAttribute('class', 'wall-tile'); tilesG.appendChild(tEl); tiles.push(tEl);
-  }
+  /* ---------- Delivery scene: 47U rack ---------- */
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+
+  // Rack drawn around its bottom-centre (0,0): 47U interior = 280px, about 5.96px per U
+  var body = document.getElementById('rackBody'), labelsG = document.getElementById('rackLabels');
+  var UPX = 280 / 47, TOP = -290;
+  el('rect', { x: -52, y: -302, width: 104, height: 300, fill: '#0e161e', stroke: '#ffffff', 'stroke-width': 2 }, body);
+  el('rect', { x: -44, y: TOP, width: 4, height: 280, fill: '#22313e' }, body);
+  el('rect', { x: 40, y: TOP, width: 4, height: 280, fill: '#22313e' }, body);
+  for (var u = 0; u <= 47; u++) el('line', { x1: -40, x2: 40, y1: TOP + u * UPX, y2: TOP + u * UPX, stroke: '#16222c', 'stroke-width': .6 }, body);
+  el('rect', { x: -48, y: -2, width: 14, height: 4, fill: '#95a3ad' }, body); el('rect', { x: 34, y: -2, width: 14, height: 4, fill: '#95a3ad' }, body);
+
+  // Equipment: [label, start U from top, height in U]
+  var KIT = [
+    ['Patch panels', 1, 2], ['AV network switch (Dante)', 4, 1], ['Control processor', 6, 1], ['Audio DSP', 8, 2],
+    ['LED video processor', 11, 2], ['Media servers', 14, 4], ['Amplifiers', 19, 4], ['Remote monitoring gateway', 24, 1],
+    ['Power management', 27, 2], ['UPS', 40, 5]
+  ];
+  var units = KIT.map(function (k, i) {
+    var y = TOP + k[1] * UPX + .5, h = k[2] * UPX - 1, g = el('g', {}, body);
+    var box = el('rect', { x: -40, y: y, width: 80, height: h, fill: '#1a2733', stroke: '#2b3b49', 'stroke-width': .8 }, g);
+    var led = el('rect', { x: 28, y: y + h / 2 - 1.2, width: 6, height: 2.4, fill: '#2b3b49' }, g);
+    for (var v = 0; v < 4; v++) el('rect', { x: -34 + v * 10, y: y + h / 2 - .8, width: 6, height: 1.6, fill: '#2b3b49' }, g);
+    var lab = el('g', { opacity: 0 }, labelsG);
+    el('line', { x1: 52, y1: y + h / 2, x2: 86, y2: y + h / 2, stroke: '#00e5e5', 'stroke-width': 1.5 }, lab);
+    el('circle', { cx: 52, cy: y + h / 2, r: 2.5, fill: '#00e5e5' }, lab);
+    var tx = el('text', { x: 92, y: y + h / 2 + 4, fill: '#ffffff', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 12, 'letter-spacing': 1 }, lab);
+    tx.textContent = k[0].toUpperCase();
+    return { box: box, led: led, lab: lab };
+  });
+
+  // LED wall: 8 x 3 tiles, edge to edge
+  var tilesG = document.getElementById('tiles'), tiles = [];
+  for (var r = 0; r < 3; r++) for (var c = 0; c < 8; c++)
+    tiles.push(el('rect', { x: 230 + c * 55, y: 24 + r * 44, width: 55, height: 44, fill: '#142231', stroke: '#0a0f14', 'stroke-width': .4 }, tilesG));
+
   var steps = document.querySelectorAll('#steps li'), label = document.getElementById('sceneLabel');
-  var labels = ['DXB · ENGINEERED WITH AI', 'IN TRANSIT · CONSOLIDATED SHIPMENT', 'ON SITE · PARTNER INSTALL', 'LIVE · COMMISSIONED FROM DUBAI'];
+  var labels = ['ON SITE · PRE-BUILT 47U RACK ARRIVES', 'INSIDE THE RACK · CONFIGURED IN DUBAI', 'INSTALL · LED WALL, GLOBE, KIOSK, SPEAKERS', 'LIVE · COMMISSIONED FROM DUBAI'];
   function setStep(n) { steps.forEach(function (s, k) { s.classList.toggle('on', k === n); }); label.textContent = labels[n]; }
+  var cables = document.querySelectorAll('#cables .cable');
+  cables.forEach(function (p) { var L = p.getTotalLength ? p.getTotalLength() : 400; p.setAttribute('stroke-dasharray', L); p.setAttribute('stroke-dashoffset', L); p.dataset.len = L; });
+  function lightAll() {
+    units.forEach(function (u) { u.box.setAttribute('fill', '#13414a'); u.box.setAttribute('stroke', '#00e5e5'); u.led.setAttribute('fill', '#00e5e5'); });
+    tiles.forEach(function (t) { t.setAttribute('fill', 'url(#wallLit)'); });
+  }
 
   if (!hasGsap || reduce || typeof ScrollTrigger === 'undefined') {
-    // Static final state
     document.getElementById('forklift').setAttribute('transform', 'translate(-400 460)');
-    document.getElementById('case').setAttribute('transform', 'translate(280 460)');
-    document.getElementById('cable').setAttribute('stroke-dashoffset', '0');
-    document.getElementById('wallContent').setAttribute('opacity', '1');
-    document.getElementById('waves').setAttribute('opacity', '1');
-    tiles.forEach(function (t) { t.setAttribute('fill', 'url(#wallGlow)'); });
-    setStep(3);
+    document.getElementById('rack').setAttribute('transform', 'translate(450 460)');
+    document.getElementById('crate').setAttribute('opacity', '0');
+    cables.forEach(function (p) { p.setAttribute('stroke-dashoffset', 0); });
+    ['wallContent', 'waves', 'globeGlow', 'kioskScreen'].forEach(function (id) { document.getElementById(id).setAttribute('opacity', '1'); });
+    lightAll(); setStep(3);
   } else {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.set('#forklift', { x: -320, y: 460 });
-    gsap.set('#case', { x: -391, y: 446 });
-    gsap.set('#lid', { transformOrigin: '0% 100%' });
-    gsap.set(['#spkL', '#spkR'], { y: -300, opacity: 0 });
-
+    var STEP_AT = [0, 4.5, 8, 11.4];
     var tl = gsap.timeline({ defaults: { ease: 'power2.inOut' }, scrollTrigger: {
-      trigger: '#deliveryPin', start: 'top top', end: '+=2400', scrub: .6, pin: true,
-      onUpdate: function (self) { setStep(Math.min(3, Math.floor(self.progress * 4 * .999))); }
+      trigger: '#deliveryPin', start: 'top top', end: '+=3200', scrub: .6, pin: true,
+      onUpdate: function (self) { var t = self.progress * tl.duration(), n = 0; STEP_AT.forEach(function (s, k) { if (t >= s) n = k; }); setStep(n); }
     } });
-    // 1-2. Forklift drives the case in, lowers it, reverses out
-    tl.to('#forklift', { x: 351, duration: 2 }, 0)
-      .to('#case', { x: 280, duration: 2 }, 0)
+    gsap.set('#forklift', { x: -330, y: 460 });
+    gsap.set('#rack', { x: -401, y: 446 });
+
+    // 1. Forklift brings the rack in, lowers it, reverses out
+    tl.to('#forklift', { x: 521, duration: 2 }, 0)
+      .to('#rack', { x: 450, duration: 2 }, 0)
       .to('#forks', { y: 10, duration: .6 }, 2)
-      .to('#case', { y: 460, duration: .6 }, 2)
-      .to('#forklift', { x: -420, duration: 1.8, ease: 'power2.in' }, 2.7)
-    // 3. Lid opens, tiles fly up into the wall
-      .to('#lid', { rotation: -70, duration: .6 }, 3.6);
-    tiles.forEach(function (t, k) {
-      var tx = +t.getAttribute('x'), ty = +t.getAttribute('y');
-      gsap.set(t, { x: 280 - tx - 44, y: 400 - ty, scale: .2, opacity: 0, transformOrigin: '50% 50%' });
-      tl.to(t, { x: 0, y: 0, scale: 1, opacity: 1, duration: .9, ease: 'power3.out' }, 4.1 + k * .12);
+      .to('#rack', { y: 460, duration: .6 }, 2)
+      .to('#forklift', { x: -420, duration: 1.6, ease: 'power2.in' }, 2.7)
+      .to('#crate', { y: -340, opacity: 0, duration: 1, ease: 'power2.in' }, 3.4);
+
+    // 2. Each piece of equipment lights up with its label
+    units.forEach(function (u, i) {
+      var at = 4.5 + i * .33;
+      tl.to(u.box, { attr: { fill: '#13414a', stroke: '#00e5e5' }, duration: .15 }, at)
+        .to(u.led, { attr: { fill: '#00e5e5' }, duration: .1 }, at)
+        .to(u.lab, { opacity: 1, duration: .12 }, at)
+        .to(u.lab, { opacity: 0, duration: .12 }, at + .3);
     });
-    // 4. Speakers drop in, cables draw, wall lights up
-    tl.to('#spkL', { y: 0, opacity: 1, duration: .7, ease: 'bounce.out' }, 6)
-      .to('#spkR', { y: 0, opacity: 1, duration: .7, ease: 'bounce.out' }, 6.15)
-      .to('#cable', { strokeDashoffset: 0, duration: 1 }, 6.6)
-      .to('#case', { opacity: .25, duration: .6 }, 6.6)
-      .to(tiles, { attr: { fill: 'url(#wallGlow)' }, duration: .1, stagger: .06 }, 7.6)
-      .to('#wallContent', { opacity: 1, duration: .5 }, 8.3)
-      .to('#waves', { opacity: 1, duration: .4 }, 8.4)
-      .to({}, { duration: .6 });
+
+    // 3. LED wall tiles fly up from the rack and lock together, then devices emanate from the rack
+    tiles.forEach(function (t, k) {
+      var tx = +t.getAttribute('x') + 27.5, ty = +t.getAttribute('y') + 22;
+      gsap.set(t, { opacity: 0 });
+      tl.to(t, { opacity: 1, duration: .15, ease: 'none' }, 8 + k * .04);
+    });
+    tl.to(cables[4], { strokeDashoffset: 0, duration: .3 }, 9.1);
+    var devs = [['#spkL', 112, 395, 0], ['#globeDev', 270, 360, 1], ['#kiosk', 640, 340, 2], ['#spkR', 788, 395, 3]];
+    devs.forEach(function (d, k) {
+      gsap.set(d[0], { opacity: 0 });
+      tl.to(cables[d[3]], { strokeDashoffset: 0, duration: .5, ease: 'none' }, 9.5 + k * .35)
+        .to(d[0], { opacity: 1, duration: .3, ease: 'none' }, 9.9 + k * .35);
+    });
+
+    // 4. Everything comes alive
+    tl.to(tiles, { attr: { fill: 'url(#wallLit)' }, duration: .05, stagger: { each: .03, from: 'center' } }, 11.4)
+      .to('#wallContent', { opacity: 1, duration: .4 }, 12)
+      .to('#globeGlow', { opacity: .9, duration: .5 }, 11.6)
+      .to('#kioskScreen', { opacity: 1, duration: .4 }, 11.8)
+      .to('#waves', { opacity: 1, duration: .4 }, 12.1)
+      .to({}, { duration: .8 });
   }
 
   /* ---------- Partner form (connect to a form service; see README) ---------- */

@@ -5,7 +5,7 @@ Static site, no build step. Hosted on Cloudflare Pages from this repository.
 ## What's on the page
 - **Countdown intro**: a 10-second-style count over a dot world map, shown once per visit (with a Skip button).
 - **Globe**: a three.js dot globe with project arcs leaving Dubai. Drag to rotate.
-- **Delivery scene**: a scroll-driven GSAP animation where a forklift delivers a DAVE flight case and the kit assembles into a working LED wall.
+- **Delivery scene**: a scroll-driven GSAP animation. A forklift delivers a crated 47U rack, the crate lifts away, each piece of rack equipment lights up with its label, then the LED wall, Pufferfish-style touch globe, kiosk and speakers appear, cabled back to the rack, and the system comes alive. The rack contents are the `KIT` list in the script.
 - Pinned projects, integrator offer, technology partners, FAQ and a partner sign-up form.
 
 ## Editing projects
