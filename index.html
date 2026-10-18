@@ -265,11 +265,11 @@ footer .logo-mark { height: 34px; }
           <ol class="steps" id="steps">
             <li class="on"><b>01 · Deliver</b><span>A pre-built, tested 47U rack arrives on site in its crate.</span></li>
             <li><b>02 · Inside the rack</b><span>Every device is specified and configured with AI in Dubai.</span></li>
-            <li><b>03 · Install</b><span>LED wall, screens, signage, touch globe, kiosk and pendant speakers connect back to the rack.</span></li>
+            <li><b>03 · Install</b><span>LED wall, screens, signage, touch globe, kiosks and pendant speakers connect back to the rack.</span></li>
             <li><b>04 · Commission</b><span>We tune, test and monitor the whole system from Dubai.</span></li>
           </ol>
         </div>
-        <svg class="scene" id="scene" viewBox="0 0 900 520" role="img" aria-label="A forklift delivers a crated 47U rack; its equipment lights up, then an LED wall, a 16:9 screen, two portrait signage screens, a touch globe, a kiosk and six pendant speakers are connected from the rack">
+        <svg class="scene" id="scene" viewBox="0 0 900 520" role="img" aria-label="A forklift delivers a crated 47U rack; its equipment lights up, then an LED wall, a 16:9 screen, two portrait signage screens, a touch globe, three kiosks and six pendant speakers are connected from the rack">
           <defs>
             <linearGradient id="wallLit" gradientUnits="userSpaceOnUse" x1="230" y1="24" x2="670" y2="156"><stop offset="0" stop-color="#00e5e5"/><stop offset=".55" stop-color="#0a8a96"/><stop offset="1" stop-color="#0a3a48"/></linearGradient>
             <radialGradient id="globeLit" cx=".38" cy=".35" r=".75"><stop offset="0" stop-color="#9ff"/><stop offset=".45" stop-color="#00e5e5"/><stop offset="1" stop-color="#064652"/></radialGradient>
@@ -283,10 +283,12 @@ footer .logo-mark { height: 34px; }
           <!-- Cables from the rack to each device -->
           <g id="cables" fill="none" stroke="#00e5e5" stroke-width="2">
             <path class="cable" d="M424 450 H270 V440"/>
-            <path class="cable" d="M476 450 H680 V452"/>
+            <path class="cable" d="M476 450 H640 V460"/>
             <path class="cable" d="M450 160 V156"/>
             <path class="cable" d="M402 240 H128 V139"/>
             <path class="cable" d="M498 240 H760 V146"/>
+            <path class="cable" d="M418 456 H110"/>
+            <path class="cable" d="M482 456 H800"/>
           </g>
           <!-- Ceiling and pendant drops (behind the screens) -->
           <line x1="0" y1="2" x2="900" y2="2" stroke="#95a3ad" stroke-width="2"/>
@@ -327,13 +329,30 @@ footer .logo-mark { height: 34px; }
             <circle id="globeGlow" cx="270" cy="310" r="45" fill="url(#globeLit)" opacity="0"/>
             <g fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1"><ellipse cx="270" cy="310" rx="20" ry="46"/><ellipse cx="270" cy="310" rx="38" ry="46"/><ellipse cx="270" cy="310" rx="46" ry="16"/></g>
           </g>
-          <!-- Touch kiosk -->
+          <!-- Lectern kiosk and two transparent-screen totems -->
           <g id="kiosk" class="dev">
-            <path d="M652 460 L656 300 Q656 262 680 262 Q704 262 704 300 L708 460 Z" fill="#142231" stroke="#ffffff" stroke-width="2"/>
-            <rect x="663" y="282" width="34" height="88" rx="3" fill="#0a0f14" stroke="#95a3ad" stroke-width="1"/>
-            <rect x="668" y="388" width="24" height="5" rx="2" fill="#95a3ad"/>
-            <rect x="644" y="456" width="72" height="4" fill="#ffffff"/>
-            <g id="kioskScreen" opacity="0"><rect x="665" y="284" width="30" height="84" rx="2" fill="url(#kioskLit)"/><circle cx="680" cy="330" r="8" fill="none" stroke="#0a0f14" stroke-width="2" opacity=".6"/></g>
+            <rect x="676" y="452" width="22" height="8" fill="#0a0f14" stroke="#95a3ad"/>
+            <path d="M680 382 L688 377 V460 H680 Z" fill="#0a0f14" stroke="#95a3ad" stroke-width="1"/>
+            <path d="M694 322 L700 318 L688 377 L680 382 Z" fill="#0a0f14" stroke="#95a3ad" stroke-width="1"/>
+            <path d="M600 382 H680 V454 Q680 460 674 460 H606 Q600 460 600 454 Z" fill="#dfe7ea" stroke="#ffffff" stroke-width="1.5"/>
+            <line x1="600" y1="404" x2="680" y2="408" stroke="#b5c0c5" stroke-width="1"/>
+            <path d="M600 382 L614 322 H694 L680 382 Z" fill="#f2f5f6" stroke="#ffffff" stroke-width="1.5"/>
+            <path d="M607 376 L618 328 H687 L675 376 Z" fill="#1b2228"/>
+            <g id="kioskScreen" opacity="0"><path d="M607 376 L618 328 H687 L675 376 Z" fill="url(#kioskLit)"/><circle cx="646" cy="352" r="9" fill="none" stroke="#0a0f14" stroke-width="2" opacity=".6"/></g>
+          </g>
+          <g id="totemL" class="dev">
+            <rect x="84" y="456" width="52" height="4" rx="2" fill="#95a3ad"/>
+            <path d="M75 330 H145 V344 Q145 352 140 360 L127 400 V456 H93 V400 L80 360 Q75 352 75 344 Z" fill="#c9d1d5" stroke="#ffffff" stroke-width="1.5"/>
+            <rect x="74" y="324" width="72" height="8" fill="#8a959b"/>
+            <rect x="77" y="266" width="66" height="60" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/>
+            <g class="kOn" opacity="0"><rect x="78" y="267" width="64" height="58" fill="rgba(0,229,229,.35)"/><rect x="86" y="276" width="30" height="4" fill="#ffffff" opacity=".7"/><line x1="141" y1="352" x2="129" y2="392" stroke="#00e5e5" stroke-width="3"/><line x1="125" y1="410" x2="125" y2="452" stroke="#00e5e5" stroke-width="3"/></g>
+          </g>
+          <g id="totemR" class="dev">
+            <rect x="774" y="456" width="52" height="4" rx="2" fill="#95a3ad"/>
+            <path d="M765 330 H835 V344 Q835 352 830 360 L817 400 V456 H783 V400 L770 360 Q765 352 765 344 Z" fill="#c9d1d5" stroke="#ffffff" stroke-width="1.5"/>
+            <rect x="764" y="324" width="72" height="8" fill="#8a959b"/>
+            <rect x="767" y="266" width="66" height="60" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/>
+            <g class="kOn" opacity="0"><rect x="768" y="267" width="64" height="58" fill="rgba(0,229,229,.35)"/><rect x="776" y="276" width="30" height="4" fill="#ffffff" opacity=".7"/><line x1="831" y1="352" x2="819" y2="392" stroke="#00e5e5" stroke-width="3"/><line x1="815" y1="410" x2="815" y2="452" stroke="#00e5e5" stroke-width="3"/></g>
           </g>
           <!-- Six pendant speakers -->
           <g id="pendants"></g>
@@ -771,7 +790,7 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
   var pendants = pendG.querySelectorAll('g');
 
   var steps = document.querySelectorAll('#steps li'), label = document.getElementById('sceneLabel');
-  var labels = ['ON SITE · PRE-BUILT 47U RACK ARRIVES', 'INSIDE THE RACK · CONFIGURED IN DUBAI', 'INSTALL · LED WALL, SCREENS, GLOBE, KIOSK, SPEAKERS', 'LIVE · COMMISSIONED FROM DUBAI'];
+  var labels = ['ON SITE · PRE-BUILT 47U RACK ARRIVES', 'INSIDE THE RACK · CONFIGURED IN DUBAI', 'INSTALL · LED WALL, SCREENS, GLOBE, KIOSKS, SPEAKERS', 'LIVE · COMMISSIONED FROM DUBAI'];
   function setStep(n) { steps.forEach(function (s, k) { s.classList.toggle('on', k === n); }); label.textContent = labels[n]; }
   var cables = document.querySelectorAll('#cables .cable');
   cables.forEach(function (p) { var L = p.getTotalLength ? p.getTotalLength() : 400; p.setAttribute('stroke-dasharray', L); p.setAttribute('stroke-dashoffset', L); p.dataset.len = L; });
@@ -786,6 +805,7 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
     document.getElementById('crate').setAttribute('opacity', '0');
     cables.forEach(function (p) { p.setAttribute('stroke-dashoffset', 0); });
     ['wallContent', 'waves', 'globeGlow', 'kioskScreen', 'screenLOn', 'signageOn', 'pendCables'].forEach(function (id) { document.getElementById(id).setAttribute('opacity', '1'); });
+    document.querySelectorAll('#scene .kOn').forEach(function (g) { g.setAttribute('opacity', '1'); });
     lightAll(); setStep(3);
   } else {
     gsap.registerPlugin(ScrollTrigger);
@@ -821,15 +841,15 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
       tl.to(t, { opacity: 1, duration: .15, ease: 'none' }, 8 + k * .04);
     });
     tl.to(cables[2], { strokeDashoffset: 0, duration: .3 }, 9.1);
-    var devs = [['#screenL', 3], ['#signage', 4], ['#globeDev', 0], ['#kiosk', 1]];
+    var devs = [['#screenL', 3], ['#signage', 4], ['#totemL', 5], ['#globeDev', 0], ['#kiosk', 1], ['#totemR', 6]];
     devs.forEach(function (d, k) {
       gsap.set(d[0], { opacity: 0 });
-      tl.to(cables[d[1]], { strokeDashoffset: 0, duration: .5, ease: 'none' }, 9.3 + k * .35)
-        .to(d[0], { opacity: 1, duration: .3, ease: 'none' }, 9.7 + k * .35);
+      tl.to(cables[d[1]], { strokeDashoffset: 0, duration: .45, ease: 'none' }, 9.2 + k * .25)
+        .to(d[0], { opacity: 1, duration: .3, ease: 'none' }, 9.55 + k * .25);
     });
     gsap.set(pendants, { opacity: 0, y: -30 });
-    tl.to('#pendCables', { opacity: 1, duration: .3 }, 10.6)
-      .to(pendants, { opacity: 1, y: 0, duration: .5, stagger: .08, ease: 'power2.out' }, 10.6);
+    tl.to('#pendCables', { opacity: 1, duration: .3 }, 10.8)
+      .to(pendants, { opacity: 1, y: 0, duration: .5, stagger: .08, ease: 'power2.out' }, 10.8);
 
     // 4. Everything comes alive
     tl.to(tiles, { attr: { fill: 'url(#wallLit)' }, duration: .05, stagger: { each: .03, from: 'center' } }, 11.4)
@@ -838,6 +858,7 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
       .to('#kioskScreen', { opacity: 1, duration: .4 }, 11.8)
       .to('#screenLOn', { opacity: 1, duration: .4 }, 11.7)
       .to('#signageOn', { opacity: 1, duration: .4 }, 11.9)
+      .to('#scene .kOn', { opacity: 1, duration: .4 }, 11.8)
       .to('#waves', { opacity: 1, duration: .4 }, 12.1)
       .to({}, { duration: .8 });
   }
