@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DAVE AV Consultancy</title>
-<meta name="description" content="DAVE designs AI-engineered audio visual projects in Dubai and delivers them worldwide with integration partners.">
+<meta name="description" content="DAVE designs and project manages audio visual projects on AI-driven platforms. Systems are pre-built in the UK and delivered worldwide with integration partners.">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,7 +113,10 @@ section { padding-block: clamp(56px, 6.5vw, 92px); }
 
 /* ---------- Delivery scene ---------- */
 .delivery { padding-block: 0; }
-.delivery-pin { min-height: 100svh; display: grid; align-items: center; padding-block: 84px 16px; }
+.delivery-pin { display: grid; align-items: center; padding-block: clamp(56px, 6.5vw, 92px); }
+.replay { margin-top: 18px; background: none; border: 1px solid var(--line); color: var(--muted); padding: 8px 14px; font: 400 .74rem/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
+.replay:hover { color: var(--text); border-color: var(--cyan); }
+.steps li { cursor: pointer; }
 .delivery-grid { display: grid; grid-template-columns: minmax(0, .62fr) minmax(0, 1.6fr); gap: clamp(20px, 3vw, 48px); align-items: center; }
 .delivery .wrap { max-width: 1440px; }
 .steps { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 4px; }
@@ -122,7 +125,7 @@ section { padding-block: clamp(56px, 6.5vw, 92px); }
 .steps li span { font-size: .92rem; }
 .steps li.on { color: var(--text); border-color: var(--cyan); }
 .steps li.on b { color: var(--cyan); }
-.scene { width: 100%; height: auto; max-height: calc(100svh - 110px); display: block; overflow: hidden; }
+.scene { width: 100%; height: auto; max-height: 640px; display: block; overflow: hidden; }
 .scene .wave { animation: wave 1.4s ease-out infinite; }
 .scene .wave.w2 { animation-delay: .2s; }
 .scene .wave.w3 { animation-delay: .4s; }
@@ -254,9 +257,9 @@ footer .logo-mark { height: 34px; }
   <section class="hero" aria-label="DAVE global projects">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">AI-engineered audio visual · Dubai to the world</span>
-        <h1>Designed in Dubai. <em>Delivered</em> worldwide.</h1>
-        <p class="lede">DAVE engineers audio visual projects with AI from our Dubai base, then delivers them with integration partners on every continent. If you install AV, we want to build with you.</p>
+        <span class="eyebrow">AI-designed · AI project managed · UK built</span>
+        <h1>Pre-built in the UK. <em>Delivered</em> worldwide.</h1>
+        <p class="lede">DAVE designs and project manages every audio visual project on AI-driven platforms. Systems are pre-built and tested in the UK, then delivered with integration partners on every continent. If you install AV, we want to build with you.</p>
         <div class="hero-actions">
           <a class="btn" href="#join">Become a delivery partner</a>
           <a class="btn ghost" href="#pipeline">See our pipeline</a>
@@ -284,13 +287,14 @@ footer .logo-mark { height: 34px; }
       <div class="wrap delivery-grid">
         <div>
           <span class="eyebrow">How we deliver</span>
-          <h2 style="margin-top:16px">From Dubai to your site</h2>
+          <h2 style="margin-top:16px">From the UK to your site</h2>
           <ol class="steps" id="steps">
-            <li class="on"><b>01 · Deliver</b><span>A pre-built, tested 47U rack arrives on site in its crate.</span></li>
-            <li><b>02 · Inside the rack</b><span>Every device is specified and configured with AI in Dubai.</span></li>
+            <li class="on"><b>01 · Deliver</b><span>A 47U rack, pre-built and tested in the UK, arrives on site in its crate.</span></li>
+            <li><b>02 · Inside the rack</b><span>Every device is designed, specified and project managed on AI-driven platforms.</span></li>
             <li><b>03 · Install</b><span>LED wall, screens, signage, touch globe, kiosks and pendant speakers connect back to the rack.</span></li>
             <li><b>04 · Commission</b><span>We tune, test and monitor the whole system from Dubai.</span></li>
           </ol>
+          <button class="replay" id="replay" type="button">Replay animation</button>
         </div>
         <svg class="scene" id="scene" viewBox="0 -70 900 590" role="img" aria-label="A forklift delivers a crated 47U rack; its equipment lights up, then an LED wall, a 16:9 screen, two portrait signage screens, a touch globe, three kiosks and six pendant speakers are connected from the rack">
           <defs>
@@ -323,7 +327,7 @@ footer .logo-mark { height: 34px; }
             <g id="tiles"></g>
             <g id="wallContent" opacity="0">
               <text x="450" y="100" text-anchor="middle" fill="#0a0f14" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="800" font-size="64" letter-spacing="8">DAVE</text>
-              <text x="450" y="128" text-anchor="middle" fill="#0a0f14" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="4">AI-ENGINEERED AV · DUBAI</text>
+              <text x="450" y="128" text-anchor="middle" fill="#0a0f14" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="4">AI-DESIGNED · UK-BUILT</text>
             </g>
           </g>
 
@@ -431,6 +435,8 @@ footer .logo-mark { height: 34px; }
           <h3>What DAVE provides</h3>
           <ul>
             <li><b>Full design package.</b> Drawings, schematics, rack layouts, cable schedules and a bill of materials.</li>
+            <li><b>AI project management.</b> Programme, procurement and progress run on one AI-driven platform you can see.</li>
+            <li><b>Pre-built in the UK.</b> Racks arrive assembled, wired and tested, ready to install.</li>
             <li><b>AI simulation.</b> Acoustic, sightline and coverage modelling signed off before install.</li>
             <li><b>Programming files.</b> Control, DSP and network configurations ready to load.</li>
             <li><b>Remote commissioning.</b> Our engineers test and tune with your team from Dubai.</li>
@@ -538,7 +544,6 @@ footer .logo-mark { height: 34px; }
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 /* =====================================================================
    GLOBE ARCS. Each entry draws an arc from Dubai to that city on the globe
@@ -561,6 +566,12 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hasGsap = typeof gsap !== 'undefined';
+  // Run fn once when el is on screen (works inside embedded frames too)
+  function whenVisible(el, fn) {
+    if (!('IntersectionObserver' in window)) { fn(); return; }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { io.disconnect(); fn(); } }); }, { threshold: .35 });
+    io.observe(el);
+  }
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   /* ---------- Nav ---------- */
@@ -749,7 +760,7 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
     function set(n) { el.innerHTML = n + supHtml; }
     if (!hasGsap || reduce) { set(end); return; }
     var o = { n: 0 };
-    gsap.to(o, { n: end, duration: 1.6, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true }, onUpdate: function () { set(Math.round(o.n)); } });
+    set(0); whenVisible(el, function () { gsap.to(o, { n: end, duration: 1.6, ease: 'power2.out', onUpdate: function () { set(Math.round(o.n)); } }); });
   });
 
   /* ---------- Pipeline counter: 1 to 450+, one square per site ---------- */
@@ -761,11 +772,11 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
     while (lit < n) sites[lit++].className = 'on';
     while (lit > n) sites[--lit].className = '';
   }
-  if (hasGsap && !reduce && typeof ScrollTrigger !== 'undefined') {
+  if (hasGsap && !reduce) {
     showCount(1); plus.classList.add('wait');
     var po = { n: 1 };
-    gsap.to(po, { n: 450, duration: 3.2, ease: 'power1.inOut', scrollTrigger: { trigger: '#pipeline', start: 'top 70%', once: true },
-      onUpdate: function () { showCount(Math.round(po.n)); }, onComplete: function () { plus.classList.remove('wait'); } });
+    whenVisible(document.getElementById('pipeline'), function () { gsap.to(po, { n: 450, duration: 3.2, ease: 'power1.inOut',
+      onUpdate: function () { showCount(Math.round(po.n)); }, onComplete: function () { plus.classList.remove('wait'); } }); });
   } else { showCount(450); }
 
   /* ---------- Delivery scene: 47U rack ---------- */
@@ -820,7 +831,7 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
   var pendants = pendG.querySelectorAll('g');
 
   var steps = document.querySelectorAll('#steps li'), label = document.getElementById('sceneLabel');
-  var labels = ['ON SITE · PRE-BUILT 47U RACK ARRIVES', 'INSIDE THE RACK · CONFIGURED IN DUBAI', 'INSTALL · LED WALL, SCREENS, GLOBE, KIOSKS, SPEAKERS', 'LIVE · COMMISSIONED FROM DUBAI'];
+  var labels = ['ON SITE · PRE-BUILT 47U RACK ARRIVES', 'INSIDE THE RACK · PRE-BUILT IN THE UK', 'INSTALL · LED WALL, SCREENS, GLOBE, KIOSKS, SPEAKERS', 'LIVE · COMMISSIONED FROM DUBAI'];
   function setStep(n) { steps.forEach(function (s, k) { s.classList.toggle('on', k === n); }); label.textContent = labels[n]; }
   var cables = document.querySelectorAll('#cables .cable');
   cables.forEach(function (p) { var L = p.getTotalLength ? p.getTotalLength() : 400; p.setAttribute('stroke-dasharray', L); p.setAttribute('stroke-dashoffset', L); p.dataset.len = L; });
@@ -829,7 +840,8 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
     tiles.forEach(function (t) { t.setAttribute('fill', 'url(#wallLit)'); });
   }
 
-  if (!hasGsap || reduce || typeof ScrollTrigger === 'undefined') {
+  if (!hasGsap || reduce) {
+    document.getElementById('replay').hidden = true;
     document.getElementById('forklift').setAttribute('transform', 'translate(-400 460)');
     document.getElementById('rack').setAttribute('transform', 'translate(450 460)');
     document.getElementById('crate').setAttribute('opacity', '0');
@@ -838,12 +850,12 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
     document.querySelectorAll('#scene .kOn').forEach(function (g) { g.setAttribute('opacity', '1'); });
     lightAll(); setStep(3);
   } else {
-    gsap.registerPlugin(ScrollTrigger);
     var STEP_AT = [0, 4.5, 8, 11.4];
-    var tl = gsap.timeline({ defaults: { ease: 'power2.inOut' }, scrollTrigger: {
-      trigger: '#deliveryPin', start: 'top top', end: '+=3200', scrub: .6, pin: true,
-      onUpdate: function (self) { var t = self.progress * tl.duration(), n = 0; STEP_AT.forEach(function (s, k) { if (t >= s) n = k; }); setStep(n); }
-    } });
+    var tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut' },
+      onUpdate: function () { var t = tl.time(), n = 0; STEP_AT.forEach(function (s, k) { if (t >= s) n = k; }); setStep(n); } });
+    whenVisible(document.getElementById('scene'), function () { tl.play(0); });
+    document.getElementById('replay').addEventListener('click', function () { tl.play(0); });
+    steps.forEach(function (li, k) { li.addEventListener('click', function () { tl.play(STEP_AT[k]); }); });
     gsap.set('#forklift', { x: -330, y: 460 });
     gsap.set('#rack', { x: -401, y: 446 });
 
