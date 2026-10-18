@@ -126,6 +126,10 @@ section { padding-block: clamp(56px, 6.5vw, 92px); }
 .steps li.on { color: var(--text); border-color: var(--cyan); }
 .steps li.on b { color: var(--cyan); }
 .scene { width: 100%; height: auto; max-height: 640px; display: block; overflow: hidden; }
+.scene #stageBeams polygon { animation: beam 3s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 50% 0; }
+.scene #stageBeams polygon:nth-child(2) { animation-delay: -1s; }
+.scene #stageBeams polygon:nth-child(3) { animation-delay: -2s; }
+@keyframes beam { from { transform: rotate(-7deg); } to { transform: rotate(7deg); } }
 .scene .wave { animation: wave 1.4s ease-out infinite; }
 .scene .wave.w2 { animation-delay: .2s; }
 .scene .wave.w3 { animation-delay: .4s; }
@@ -305,6 +309,7 @@ footer .logo-mark { height: 34px; }
             <radialGradient id="globeLit" cx=".38" cy=".35" r=".75"><stop offset="0" stop-color="#9ff"/><stop offset=".45" stop-color="#00e5e5"/><stop offset="1" stop-color="#064652"/></radialGradient>
             <linearGradient id="kioskLit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00e5e5"/><stop offset="1" stop-color="#0a4a5a"/></linearGradient>
             <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#22313e" stroke-width="1"/></pattern>
+            <linearGradient id="beamR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff2d3d" stop-opacity=".75"/><stop offset="1" stop-color="#ff2d3d" stop-opacity="0"/></linearGradient><linearGradient id="beamG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2dff6a" stop-opacity=".75"/><stop offset="1" stop-color="#2dff6a" stop-opacity="0"/></linearGradient><linearGradient id="beamB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d6bff" stop-opacity=".75"/><stop offset="1" stop-color="#2d6bff" stop-opacity="0"/></linearGradient>
           </defs>
           <rect x="0" y="-70" width="900" height="530" fill="url(#grid)" opacity=".45"/>
           <line x1="0" y1="460" x2="900" y2="460" stroke="#95a3ad" stroke-width="2"/>
@@ -385,6 +390,9 @@ footer .logo-mark { height: 34px; }
           </g>
           <!-- Six pendant speakers -->
           <g id="pendants"></g>
+          <!-- Three stage lights between the middle speakers: red, green, blue -->
+          <g id="stageBeams" opacity="0" style="mix-blend-mode:screen"><polygon points="293,-36 307,-36 346,170 254,170" fill="url(#beamR)"/><polygon points="443,-36 457,-36 496,170 404,170" fill="url(#beamG)"/><polygon points="593,-36 607,-36 646,170 554,170" fill="url(#beamB)"/></g>
+          <g id="stageLights"><g class="stageLight"><line x1="300" y1="-68" x2="300" y2="-62" stroke="#95a3ad" stroke-width="2"/><path d="M289 -62 H311 V-48 M289 -62 V-48" fill="none" stroke="#95a3ad" stroke-width="2"/><rect x="292" y="-58" width="16" height="22" rx="2" fill="#142231" stroke="#ffffff" stroke-width="2"/><ellipse class="lens" cx="300" cy="-36" rx="8" ry="2.5" fill="#2b3b49" data-c="#ff2d3d"/></g><g class="stageLight"><line x1="450" y1="-68" x2="450" y2="-62" stroke="#95a3ad" stroke-width="2"/><path d="M439 -62 H461 V-48 M439 -62 V-48" fill="none" stroke="#95a3ad" stroke-width="2"/><rect x="442" y="-58" width="16" height="22" rx="2" fill="#142231" stroke="#ffffff" stroke-width="2"/><ellipse class="lens" cx="450" cy="-36" rx="8" ry="2.5" fill="#2b3b49" data-c="#2dff6a"/></g><g class="stageLight"><line x1="600" y1="-68" x2="600" y2="-62" stroke="#95a3ad" stroke-width="2"/><path d="M589 -62 H611 V-48 M589 -62 V-48" fill="none" stroke="#95a3ad" stroke-width="2"/><rect x="592" y="-58" width="16" height="22" rx="2" fill="#142231" stroke="#ffffff" stroke-width="2"/><ellipse class="lens" cx="600" cy="-36" rx="8" ry="2.5" fill="#2b3b49" data-c="#2d6bff"/></g></g>
           <g id="waves" opacity="0" fill="none" stroke="#00e5e5" stroke-width="2" stroke-linecap="round"></g>
 
           <!-- First phase terminations and the umbilicals that plug the racks into them -->
@@ -880,6 +888,8 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
     umbs.forEach(function (p) { p.setAttribute('stroke-dashoffset', 0); });
     ['wallContent', 'waves', 'globeGlow', 'kioskScreen', 'screenLOn', 'signageOn', 'pendCables'].forEach(function (id) { document.getElementById(id).setAttribute('opacity', '1'); });
     document.querySelectorAll('#scene .kOn').forEach(function (g) { g.setAttribute('opacity', '1'); });
+    document.getElementById('stageBeams').setAttribute('opacity', '1');
+    document.querySelectorAll('#scene .lens').forEach(function (l) { l.setAttribute('fill', l.dataset.c); });
     lightAll(); setStep(3);
   } else {
     var STEP_AT = [0, 4.5, 9.2, 12.6];
@@ -930,6 +940,10 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
         .to(d[0], { opacity: 1, duration: .3, ease: 'none' }, 10.75 + k * .25);
     });
     gsap.set(pendants, { opacity: 0, y: -30 });
+    gsap.set('#stageLights .stageLight', { opacity: 0, y: -30 });
+    tl.to('#stageLights .stageLight', { opacity: 1, y: 0, duration: .5, stagger: .1, ease: 'power2.out' }, 12.2);
+    document.querySelectorAll('#scene .lens').forEach(function (l, k) { tl.to(l, { attr: { fill: l.dataset.c }, duration: .2 }, 13 + k * .2); });
+    tl.to('#stageBeams', { opacity: 1, duration: .6 }, 13);
     tl.to('#pendCables', { opacity: 1, duration: .3 }, 12)
       .to(pendants, { opacity: 1, y: 0, duration: .5, stagger: .08, ease: 'power2.out' }, 12);
 
