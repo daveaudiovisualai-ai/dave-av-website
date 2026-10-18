@@ -6,16 +6,16 @@ Static site, no build step. Hosted on Cloudflare Pages from this repository.
 - **Countdown intro**: a 10-second-style count over a dot world map, shown once per visit (with a Skip button).
 - **Globe**: a three.js dot globe with project arcs leaving Dubai. Drag to rotate.
 - **Delivery scene**: a scroll-driven GSAP animation. A forklift delivers a crated 47U rack, the crate lifts away, each piece of rack equipment lights up with its label, then the LED wall, a 16:9 screen, two portrait 75" signage screens, a Pufferfish-style touch globe, a white lectern kiosk, two tapered transparent-screen totems and six pendant speakers appear, cabled back to the rack, and the system comes alive. The rack contents are the `KIT` list in the script.
-- Pinned projects, integrator offer, technology partners, FAQ and a partner sign-up form.
+- Pipeline counter (1 to 450+ with one lit square per site), integrator offer, technology partners, FAQ and a partner sign-up form.
 
-## Editing projects
-All projects live in the `PROJECTS` list near the top of the script in `index.html`. Each entry becomes an arc on the globe and a card in "Pinned projects":
+## Editing globe arcs
+The `PROJECTS` list near the top of the script in `index.html` sets the cities the globe arcs reach and the ticker under the headline (only city, country, lat and lng are used):
 
 ```js
 { city: 'London', country: 'UK', lat: 51.51, lng: -0.13, title: 'Corporate headquarters', sector: 'Corporate', brands: ['Samsung', 'Biamp'], text: 'One-line description.' }
 ```
 
-Get lat/lng by right-clicking the location in Google Maps. When the real projects are in, remove the yellow "Example content" tag in the Projects section.
+Get lat/lng by right-clicking the location in Google Maps.
 
 ## Libraries (free, loaded from cdnjs)
 - three.js r128 for the globe

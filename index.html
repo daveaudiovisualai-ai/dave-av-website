@@ -133,7 +133,24 @@ section { padding-block: clamp(80px, 11vw, 140px); }
   .steps li span { display: none; }
 }
 
-/* ---------- Projects ---------- */
+/* ---------- Pipeline ---------- */
+.pipeline { border-bottom: 1px solid var(--line); background: radial-gradient(50% 80% at 20% 50%, rgba(0,229,229,.08), transparent 70%); }
+.pipeline-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 5vw, 80px); align-items: center; }
+.pipe-graphic { display: grid; gap: 22px; min-width: 0; }
+.sites { display: grid; grid-template-columns: repeat(30, 1fr); gap: 3px; width: min(100%, 390px); }
+.sites i { aspect-ratio: 1; background: var(--line); border-radius: 1px; transition: background .25s, box-shadow .25s; }
+.sites i.on { background: var(--cyan); box-shadow: 0 0 6px rgba(0,229,229,.6); }
+.sites-key { display: flex; align-items: center; gap: 8px; font: 400 .74rem/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.sites-key i { width: 9px; height: 9px; background: var(--cyan); border-radius: 1px; }
+#pipePlus { opacity: 1; transition: opacity .4s, transform .4s; display: inline-block; }
+#pipePlus.wait { opacity: 0; transform: scale(.4); }
+.pipe-num strong { display: inline-block; min-width: 3ch; }
+.pipe-num { font: 800 clamp(7rem, 20vw, 15rem)/.8 var(--f-display); color: var(--white); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+.pipe-lede b { color: var(--text); font-weight: 600; }
+.pipe-num sup { color: var(--cyan); font-size: .4em; vertical-align: top; }
+@media (max-width: 760px) { .pipeline-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Projects (unused) ---------- */
 .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .project { background: var(--panel); padding: 26px; display: grid; gap: 12px; align-content: start; min-width: 0; }
 .project .meta { display: flex; justify-content: space-between; gap: 12px; font: 400 .74rem/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
@@ -221,7 +238,7 @@ footer .logo-mark { height: 34px; }
     <a class="logo" href="#top" aria-label="DAVE home"><svg class="logo-mark" viewBox="60 100 1125 975" role="img" aria-label="DAVE"><path fill="var(--white)" fill-rule="evenodd" d="M105 105H470Q615 105 615 250V385Q615 528 470 528H105ZM197 187V446H460Q535 446 535 370V262Q535 187 460 187Z"/><polygon fill="var(--cyan)" points="618,528 845,105 940,105 1178,528 1078,528 890,205 720,528"/><rect fill="var(--cyan)" x="62" y="603" width="1123" height="12"/><polygon fill="var(--cyan)" points="100,682 205,682 380,990 545,682 648,682 440,1072 315,1072"/><polygon fill="var(--white)" points="712,682 1158,682 1158,757 798,757 798,830 1118,830 1118,910 798,910 798,993 1158,993 1158,1072 712,1072"/></svg></a>
     <ul>
       <li><a href="#delivery">How we deliver</a></li>
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="#pipeline">Pipeline</a></li>
       <li><a href="#integrators">Integrators</a></li>
       <li><a href="#partners">Partners</a></li>
     </ul>
@@ -238,9 +255,9 @@ footer .logo-mark { height: 34px; }
         <p class="lede">DAVE engineers audio visual projects with AI from our Dubai base, then delivers them with integration partners on every continent. If you install AV, we want to build with you.</p>
         <div class="hero-actions">
           <a class="btn" href="#join">Become a delivery partner</a>
-          <a class="btn ghost" href="#projects">View pinned projects</a>
+          <a class="btn ghost" href="#pipeline">See our pipeline</a>
         </div>
-        <div class="feed" id="feed" aria-live="polite"><b>Dubai</b> → <b>London</b> <span>· Corporate HQ</span></div>
+        <div class="feed" id="feed" aria-live="polite"><b>Dubai</b> → <b>London</b> <span>· UK</span></div>
       </div>
       <div class="globe-wrap">
         <div id="globe" aria-label="Globe showing DAVE projects connected to Dubai" role="img"></div>
@@ -251,7 +268,7 @@ footer .logo-mark { height: 34px; }
 
   <section class="stats" aria-label="DAVE in numbers">
     <div class="wrap">
-      <div class="stat"><strong data-count="9">0</strong><span>Pinned projects on the globe</span></div>
+      <div class="stat"><strong data-count="450">0<sup>+</sup></strong><span>Pipeline sites in the next five years</span></div>
       <div class="stat"><strong data-count="10">0<sup>+</sup></strong><span>Technology partner brands</span></div>
       <div class="stat"><strong data-count="24">0<sup>/7</sup></strong><span>Remote monitoring from Dubai</span></div>
       <div class="stat"><strong>GMT<sup>+4</sup></strong><span>Bridging Europe, Africa and Asia</span></div>
@@ -386,18 +403,19 @@ footer .logo-mark { height: 34px; }
     </div>
   </section>
 
-  <section id="projects">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Pinned projects</span>
-        <h2>Every arc on the globe is a project</h2>
-        <p class="lede">Each one was engineered in Dubai and delivered on site with a local partner. Select a project to see its route on the globe. <span class="example">Example content</span></p>
+  <section id="pipeline" class="pipeline">
+    <div class="wrap pipeline-grid">
+      <div class="pipe-graphic"><div class="pipe-num"><strong id="pipeNum">450</strong><sup id="pipePlus">+</sup></div><div class="sites" id="sites" aria-hidden="true"></div><div class="sites-key"><i></i>Each square is one pipeline site</div></div>
+      <div class="head" style="margin:0">
+        <span class="eyebrow">Pipeline portfolio</span>
+        <h2>450+ sites in the next five years</h2>
+        <p class="lede pipe-lede"><b>We have a pipeline portfolio of 450+ sites within the next five years, located in premium shopping malls worldwide.</b> Every one needs local integration partners to bring it to life.</p>
+        <a class="btn" href="#join" style="justify-self:start">Partner on the pipeline</a>
       </div>
-      <div class="projects" id="projectGrid"></div>
     </div>
   </section>
 
-  <section id="integrators" style="padding-top:0">
+  <section id="integrators">
     <div class="wrap">
       <div class="head">
         <span class="eyebrow">For integrators</span>
@@ -519,8 +537,8 @@ footer .logo-mark { height: 34px; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 /* =====================================================================
-   EDIT YOUR PROJECTS HERE. Every entry becomes an arc on the globe and a
-   card in "Pinned projects". lat/lng are the project's location.
+   GLOBE ARCS. Each entry draws an arc from Dubai to that city on the globe
+   and appears in the ticker under the headline. lat/lng are the location.
    ===================================================================== */
 var PROJECTS = [
   { city: 'London',    country: 'UK',           lat: 51.51, lng: -0.13,  title: 'Corporate headquarters',   sector: 'Corporate',   brands: ['Samsung', 'Biamp'],      text: 'Thirty meeting spaces and a town hall, designed in Dubai and installed by a UK partner.' },
@@ -599,7 +617,7 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
 
   /* ---------- Globe ---------- */
   var feed = document.getElementById('feed');
-  function setFeed(p) { feed.innerHTML = '<b>Dubai</b> → <b>' + p.city + '</b> <span>· ' + p.title + ' · ' + p.brands.join(', ') + '</span>'; }
+  function setFeed(p) { feed.innerHTML = '<b>Dubai</b> → <b>' + p.city + '</b> <span>· ' + p.country + '</span>'; }
   var focusProject = function () {};
   var holder = document.getElementById('globe');
 
@@ -721,27 +739,30 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
   }
   setFeed(PROJECTS[0]);
 
-  /* ---------- Project cards ---------- */
-  var grid = document.getElementById('projectGrid');
-  PROJECTS.forEach(function (p, i) {
-    var el = document.createElement('article'); el.className = 'project';
-    el.innerHTML = '<div class="meta"><span>' + p.sector + '</span><span>' + p.city + ', ' + p.country + '</span></div>' +
-      '<span class="route">DXB → ' + p.city.toUpperCase() + '</span><h3>' + p.title + '</h3><p>' + p.text + '</p>' +
-      '<div class="chips">' + p.brands.map(function (b) { return '<span>' + b + '</span>'; }).join('') + '</div>' +
-      '<button type="button">Show on globe ↑</button>';
-    el.querySelector('button').addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); focusProject(i); });
-    grid.appendChild(el);
-  });
-
   /* ---------- Stat counters ---------- */
   document.querySelectorAll('[data-count]').forEach(function (el) {
     var end = +el.dataset.count, sup = el.querySelector('sup'), supHtml = sup ? sup.outerHTML : '';
-    if (el.dataset.count === '9') end = PROJECTS.length;
     function set(n) { el.innerHTML = n + supHtml; }
     if (!hasGsap || reduce) { set(end); return; }
     var o = { n: 0 };
     gsap.to(o, { n: end, duration: 1.6, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true }, onUpdate: function () { set(Math.round(o.n)); } });
   });
+
+  /* ---------- Pipeline counter: 1 to 450+, one square per site ---------- */
+  var pipeEl = document.getElementById('pipeNum'), plus = document.getElementById('pipePlus'), sitesG = document.getElementById('sites'), sites = [];
+  for (var q = 0; q < 450; q++) { var sq = document.createElement('i'); sitesG.appendChild(sq); sites.push(sq); }
+  var lit = 0;
+  function showCount(n) {
+    pipeEl.textContent = n;
+    while (lit < n) sites[lit++].className = 'on';
+    while (lit > n) sites[--lit].className = '';
+  }
+  if (hasGsap && !reduce && typeof ScrollTrigger !== 'undefined') {
+    showCount(1); plus.classList.add('wait');
+    var po = { n: 1 };
+    gsap.to(po, { n: 450, duration: 3.2, ease: 'power1.inOut', scrollTrigger: { trigger: '#pipeline', start: 'top 70%', once: true },
+      onUpdate: function () { showCount(Math.round(po.n)); }, onComplete: function () { plus.classList.remove('wait'); } });
+  } else { showCount(450); }
 
   /* ---------- Delivery scene: 47U rack ---------- */
   var NS = 'http://www.w3.org/2000/svg';
