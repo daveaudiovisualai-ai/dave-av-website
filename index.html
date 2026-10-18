@@ -78,26 +78,26 @@ section { padding-block: clamp(80px, 11vw, 140px); }
 @media (max-width: 900px) { .nav ul { display: none; } }
 
 /* ---------- Hero globe ---------- */
-.hero { position: relative; min-height: 100svh; display: grid; align-items: center; overflow: hidden; isolation: isolate; padding-block: 110px 60px; }
-#globe { position: absolute; z-index: -1; top: 52%; right: -2vw; width: min(60vw, 820px); aspect-ratio: 1; transform: translateY(-50%); cursor: grab; touch-action: pan-y; }
+.hero { position: relative; min-height: 100svh; display: grid; align-items: center; overflow: hidden; isolation: isolate; padding-block: 96px 40px; }
+.globe-wrap { position: relative; justify-self: center; width: min(100%, calc(100svh - 150px)); min-width: 0; }
+#globe { position: relative; width: 100%; aspect-ratio: 1; cursor: grab; touch-action: pan-y; }
 #globe:active { cursor: grabbing; }
 #globe canvas { display: block; width: 100% !important; height: 100% !important; }
 .hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(60% 70% at 72% 50%, rgba(0,229,229,.10), transparent 70%); }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(16px, 3vw, 40px); align-items: center; }
 .hero-copy { display: grid; gap: 26px; }
-.hero h1 { font-size: clamp(3.2rem, 7.6vw, 6.8rem); }
+.hero h1 { font-size: clamp(2.8rem, min(6.4vw, 10.5svh), 6.4rem); }
 .hero h1 em { font-style: normal; color: var(--cyan); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.feed { position: absolute; left: var(--gutter); bottom: 28px; z-index: 2; display: flex; align-items: center; gap: 14px; font: 400 .8rem/1.3 var(--f-mono); color: var(--text); border-left: 2px solid var(--cyan); padding: 8px 14px; background: rgba(10,15,20,.6); backdrop-filter: blur(6px); max-width: calc(100% - 2 * var(--gutter)); }
+.feed { justify-self: start; display: flex; align-items: center; gap: 14px; font: 400 .8rem/1.3 var(--f-mono); color: var(--text); border-left: 2px solid var(--cyan); padding: 8px 14px; background: rgba(10,15,20,.6); backdrop-filter: blur(6px); max-width: calc(100% - 2 * var(--gutter)); }
 .feed b { color: var(--cyan); font-weight: 500; }
 .feed span { color: var(--muted); }
-.globe-legend { position: absolute; right: var(--gutter); bottom: 28px; font: 400 .72rem/1.6 var(--f-mono); color: var(--muted); letter-spacing: .08em; text-transform: uppercase; display: grid; gap: 2px; text-align: right; }
+.globe-legend { position: absolute; right: 0; bottom: 0; font: 400 .72rem/1.6 var(--f-mono); color: var(--muted); letter-spacing: .08em; text-transform: uppercase; display: grid; gap: 2px; text-align: right; }
 .globe-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); margin-right: 8px; box-shadow: 0 0 8px var(--cyan); }
 @media (max-width: 900px) {
-  .hero { align-items: end; padding-bottom: 110px; }
-  .hero-grid { grid-template-columns: 1fr; }
-  #globe { right: 50%; top: 34%; width: 135vw; transform: translate(50%, -50%); opacity: .75; }
-  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 30%, rgba(10,15,20,.85) 62%); pointer-events: none; }
+  .hero { align-items: start; padding-block: 88px 40px; min-height: 0; }
+  .hero-grid { grid-template-columns: 1fr; gap: 8px; }
+  .globe-wrap { order: -1; width: min(100%, 440px); }
   .globe-legend { display: none; }
 }
 
@@ -231,7 +231,6 @@ footer .logo-mark { height: 34px; }
 
 <main id="top">
   <section class="hero" aria-label="DAVE global projects">
-    <div id="globe" aria-label="Globe showing DAVE projects connected to Dubai" role="img"></div>
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">AI-engineered audio visual · Dubai to the world</span>
@@ -241,16 +240,19 @@ footer .logo-mark { height: 34px; }
           <a class="btn" href="#join">Become a delivery partner</a>
           <a class="btn ghost" href="#projects">View pinned projects</a>
         </div>
+        <div class="feed" id="feed" aria-live="polite"><b>Dubai</b> → <b>London</b> <span>· Corporate HQ</span></div>
+      </div>
+      <div class="globe-wrap">
+        <div id="globe" aria-label="Globe showing DAVE projects connected to Dubai" role="img"></div>
+        <div class="globe-legend" aria-hidden="true"><span><i></i>DAVE HQ · Dubai, UAE</span><span>Drag to rotate</span></div>
       </div>
     </div>
-    <div class="feed" id="feed" aria-live="polite"><b>Dubai</b> → <b>London</b> <span>· Corporate HQ</span></div>
-    <div class="globe-legend" aria-hidden="true"><span><i></i>DAVE HQ · Dubai, UAE</span><span>Drag to rotate</span></div>
   </section>
 
   <section class="stats" aria-label="DAVE in numbers">
     <div class="wrap">
       <div class="stat"><strong data-count="9">0</strong><span>Pinned projects on the globe</span></div>
-      <div class="stat"><strong data-count="6">0<sup>+</sup></strong><span>Technology partner brands</span></div>
+      <div class="stat"><strong data-count="10">0<sup>+</sup></strong><span>Technology partner brands</span></div>
       <div class="stat"><strong data-count="24">0<sup>/7</sup></strong><span>Remote monitoring from Dubai</span></div>
       <div class="stat"><strong>GMT<sup>+4</sup></strong><span>Bridging Europe, Africa and Asia</span></div>
     </div>
@@ -269,14 +271,14 @@ footer .logo-mark { height: 34px; }
             <li><b>04 · Commission</b><span>We tune, test and monitor the whole system from Dubai.</span></li>
           </ol>
         </div>
-        <svg class="scene" id="scene" viewBox="0 0 900 520" role="img" aria-label="A forklift delivers a crated 47U rack; its equipment lights up, then an LED wall, a 16:9 screen, two portrait signage screens, a touch globe, three kiosks and six pendant speakers are connected from the rack">
+        <svg class="scene" id="scene" viewBox="0 -70 900 590" role="img" aria-label="A forklift delivers a crated 47U rack; its equipment lights up, then an LED wall, a 16:9 screen, two portrait signage screens, a touch globe, three kiosks and six pendant speakers are connected from the rack">
           <defs>
             <linearGradient id="wallLit" gradientUnits="userSpaceOnUse" x1="230" y1="24" x2="670" y2="156"><stop offset="0" stop-color="#00e5e5"/><stop offset=".55" stop-color="#0a8a96"/><stop offset="1" stop-color="#0a3a48"/></linearGradient>
             <radialGradient id="globeLit" cx=".38" cy=".35" r=".75"><stop offset="0" stop-color="#9ff"/><stop offset=".45" stop-color="#00e5e5"/><stop offset="1" stop-color="#064652"/></radialGradient>
             <linearGradient id="kioskLit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00e5e5"/><stop offset="1" stop-color="#0a4a5a"/></linearGradient>
             <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#22313e" stroke-width="1"/></pattern>
           </defs>
-          <rect x="0" y="0" width="900" height="460" fill="url(#grid)" opacity=".45"/>
+          <rect x="0" y="-70" width="900" height="530" fill="url(#grid)" opacity=".45"/>
           <line x1="0" y1="460" x2="900" y2="460" stroke="#95a3ad" stroke-width="2"/>
           <text x="20" y="492" fill="#95a3ad" font-family="IBM Plex Mono, monospace" font-size="13" letter-spacing="2" id="sceneLabel">ON SITE · PRE-BUILT 47U RACK ARRIVES</text>
 
@@ -291,7 +293,7 @@ footer .logo-mark { height: 34px; }
             <path class="cable" d="M482 456 H800"/>
           </g>
           <!-- Ceiling and pendant drops (behind the screens) -->
-          <line x1="0" y1="2" x2="900" y2="2" stroke="#95a3ad" stroke-width="2"/>
+          <line x1="0" y1="-68" x2="900" y2="-68" stroke="#95a3ad" stroke-width="2"/>
           <g id="pendCables" stroke="#95a3ad" stroke-width="1.2" opacity="0"></g>
 
           <!-- LED wall: tight tiles, no gaps -->
@@ -308,7 +310,7 @@ footer .logo-mark { height: 34px; }
           <!-- 16:9 LED screen, left of the wall -->
           <g id="screenL" class="dev">
             <rect x="40" y="40" width="176" height="99" fill="#142231" stroke="#ffffff" stroke-width="2"/>
-            <g id="screenLOn" opacity="0"><rect x="42" y="42" width="172" height="95" fill="url(#wallLit)"/><text x="128" y="96" text-anchor="middle" fill="#0a0f14" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="3">LIVE FEED · 16:9</text></g>
+            <g id="screenLOn" opacity="0"><rect x="42" y="42" width="172" height="95" fill="url(#wallLit)"/><text x="128" y="86" text-anchor="middle" fill="#0a0f14" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="500" letter-spacing="2">MEDIA PLAYERS</text><text x="128" y="104" text-anchor="middle" fill="#0a0f14" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="500" letter-spacing="2">VIDEO OVER IP</text></g>
           </g>
           <!-- 2 x 75in portrait signage, right of the wall -->
           <g id="signage" class="dev">
@@ -320,7 +322,6 @@ footer .logo-mark { height: 34px; }
               <rect x="787" y="50" width="40" height="5" fill="#0a0f14" opacity=".6"/><rect x="787" y="60" width="26" height="3" fill="#0a0f14" opacity=".4"/>
               <circle cx="725" cy="110" r="12" fill="none" stroke="#0a0f14" stroke-width="2.5" opacity=".5"/><rect x="795" y="98" width="24" height="24" fill="none" stroke="#0a0f14" stroke-width="2.5" opacity=".5"/>
             </g>
-            <text x="766" y="162" text-anchor="middle" fill="#95a3ad" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1.5">2 × 75" PORTRAIT</text>
           </g>
           <g id="globeDev" class="dev">
             <rect x="252" y="356" width="36" height="104" fill="#142231" stroke="#ffffff" stroke-width="2"/>
@@ -442,6 +443,10 @@ footer .logo-mark { height: 34px; }
         <div class="partner">Biamp</div>
         <div class="partner">Pufferfish</div>
         <div class="partner">Midwich Group</div>
+        <div class="partner">HIVE</div>
+        <div class="partner">Turtle AV</div>
+        <div class="partner">Netgear</div>
+        <div class="partner">Q-SYS</div>
         <div class="partner more">and more</div>
         <div class="partner more">Your brand?<br>Talk to us</div>
       </div>
@@ -777,14 +782,14 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
 
   // Six pendant speakers, equally spaced, hanging from the ceiling
   var pendG = document.getElementById('pendants'), pendC = document.getElementById('pendCables'), wavesG = document.getElementById('waves');
-  var PEND_X = [75, 225, 375, 525, 675, 825], PEND_Y = 184;
+  var PEND_X = [75, 225, 375, 525, 675, 825], PEND_Y = -58;
   PEND_X.forEach(function (x) {
-    el('line', { x1: x, y1: 2, x2: x, y2: PEND_Y }, pendC);
+    el('line', { x1: x, y1: -68, x2: x, y2: PEND_Y }, pendC);
     var g = el('g', {}, pendG);
-    el('path', { d: 'M' + (x - 10) + ' ' + PEND_Y + ' H' + (x + 10) + ' L' + (x + 15) + ' ' + (PEND_Y + 30) + ' H' + (x - 15) + ' Z', fill: '#142231', stroke: '#ffffff', 'stroke-width': 2 }, g);
-    el('ellipse', { cx: x, cy: PEND_Y + 30, rx: 15, ry: 3, fill: '#00e5e5' }, g);
-    [10, 20, 30].forEach(function (r, k) {
-      el('path', { class: 'wave' + (k ? ' w' + (k + 1) : ''), d: 'M' + (x - r) + ' ' + (PEND_Y + 38 + k * 6) + ' Q' + x + ' ' + (PEND_Y + 38 + k * 6 + r * .9) + ' ' + (x + r) + ' ' + (PEND_Y + 38 + k * 6) }, wavesG);
+    el('path', { d: 'M' + (x - 9) + ' ' + PEND_Y + ' H' + (x + 9) + ' L' + (x + 13) + ' ' + (PEND_Y + 26) + ' H' + (x - 13) + ' Z', fill: '#142231', stroke: '#ffffff', 'stroke-width': 2 }, g);
+    el('ellipse', { cx: x, cy: PEND_Y + 26, rx: 13, ry: 3, fill: '#00e5e5' }, g);
+    [9, 18, 27].forEach(function (r, k) {
+      el('path', { class: 'wave' + (k ? ' w' + (k + 1) : ''), d: 'M' + (x - r) + ' ' + (PEND_Y + 32 + k * 5) + ' Q' + x + ' ' + (PEND_Y + 32 + k * 5 + r * .7) + ' ' + (x + r) + ' ' + (PEND_Y + 32 + k * 5) }, wavesG);
     });
   });
   var pendants = pendG.querySelectorAll('g');
