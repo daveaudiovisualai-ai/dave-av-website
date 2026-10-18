@@ -1,24 +1,31 @@
-# Dave website
+# DAVE website (dave-av.ai)
 
-A single-page static site. Open `index.html` in a browser, or upload the folder to any static host (Netlify, Vercel, GitHub Pages, cPanel).
+Static site, no build step. Hosted on Cloudflare Pages from this repository.
 
-## Swap in your own hero video
-To play a YouTube video in the hero, edit `var YT_ID = '...'` in the script near the bottom of index.html (the part after `/shorts/` or `?v=` in the YouTube link). Set it to `''` to use a local file instead:
+## What's on the page
+- **Countdown intro**: a 10-second-style count over a dot world map, shown once per visit (with a Skip button).
+- **Globe**: a three.js dot globe with project arcs leaving Dubai. Drag to rotate.
+- **Delivery scene**: a scroll-driven GSAP animation where a forklift delivers a DAVE flight case and the kit assembles into a working LED wall.
+- Pinned projects, integrator offer, technology partners, FAQ and a partner sign-up form.
 
-1. Export a short loop (10–30 s, no sound needed, 1920×1080, under ~8 MB).
-2. Save it as `assets/hero.mp4` (optional extra: `assets/hero.webm`).
-3. Save a still frame as `assets/hero-poster.jpg`.
-The animated LED-wall background only appears when no video file loads, so nothing else needs changing.
+## Editing projects
+All projects live in the `PROJECTS` list near the top of the script in `index.html`. Each entry becomes an arc on the globe and a card in "Pinned projects":
 
-## Things to edit in index.html
-- Logo: the `DAVE` wordmark in the header (replace with an `<img>` of your logo).
-- Email and studio address in the Contact section (`hello@dave-av.ai` is a guess at the address; change it if needed).
-- Projects: the three cards marked "Example project" are placeholders. Replace text, figures and swap each `<canvas>` for an `<img src="assets/your-photo.jpg">`.
-- Figures marked "example" in the intro and the "Time saved per stage" meters are illustrative.
-- Enquiry form: connect to a form service (e.g. Formspree) by setting the form's `action` and removing the preview handler in the script.
+```js
+{ city: 'London', country: 'UK', lat: 51.51, lng: -0.13, title: 'Corporate headquarters', sector: 'Corporate', brands: ['Samsung', 'Biamp'], text: 'One-line description.' }
+```
+
+Get lat/lng by right-clicking the location in Google Maps. When the real projects are in, remove the yellow "Example content" tag in the Projects section.
+
+## Libraries (free, loaded from cdnjs)
+- three.js r128 for the globe
+- GSAP 3.12.5 + ScrollTrigger for the scroll animation and counters
+
+## Still to do
+- Partner sign-up form: connect to a form service (e.g. Formspree) by setting the form `action` and removing the preview handler.
+- Partner logos: brand names are text until each brand approves logo use.
 
 ## Hosting on dave-av.ai with Cloudflare Pages (free)
-1. In Cloudflare, add the site dave-av.ai, then change the nameservers at GoDaddy to the two Cloudflare gives you. The domain stays registered with GoDaddy.
-2. Go to Workers & Pages, then Create, then Pages, then "Upload assets". Drag in this folder (index.html and assets/).
-3. Under the project's Custom domains, add dave-av.ai and www.dave-av.ai.
-Keep the hero video under 25 MB, which is Cloudflare Pages' limit for a single file. A 20-second 1080p loop at a sensible bitrate is usually 5 to 10 MB.
+1. In Cloudflare, add the site dave-av.ai, then change the nameservers at GoDaddy to the two Cloudflare gives you.
+2. Workers & Pages → Create → Pages → Connect to Git → this repo. Framework preset: None, build command empty, output directory `/`.
+3. Under Custom domains, add dave-av.ai and www.dave-av.ai.
