@@ -265,11 +265,11 @@ footer .logo-mark { height: 34px; }
           <ol class="steps" id="steps">
             <li class="on"><b>01 · Deliver</b><span>A pre-built, tested 47U rack arrives on site in its crate.</span></li>
             <li><b>02 · Inside the rack</b><span>Every device is specified and configured with AI in Dubai.</span></li>
-            <li><b>03 · Install</b><span>LED wall, touch globe, kiosk and speakers connect back to the rack.</span></li>
+            <li><b>03 · Install</b><span>LED wall, screens, signage, touch globe, kiosk and pendant speakers connect back to the rack.</span></li>
             <li><b>04 · Commission</b><span>We tune, test and monitor the whole system from Dubai.</span></li>
           </ol>
         </div>
-        <svg class="scene" id="scene" viewBox="0 0 900 520" role="img" aria-label="A forklift delivers a 47U equipment rack; its equipment lights up, then an LED wall, a touch globe, a kiosk and speakers are connected from the rack">
+        <svg class="scene" id="scene" viewBox="0 0 900 520" role="img" aria-label="A forklift delivers a crated 47U rack; its equipment lights up, then an LED wall, a 16:9 screen, two portrait signage screens, a touch globe, a kiosk and six pendant speakers are connected from the rack">
           <defs>
             <linearGradient id="wallLit" gradientUnits="userSpaceOnUse" x1="230" y1="24" x2="670" y2="156"><stop offset="0" stop-color="#00e5e5"/><stop offset=".55" stop-color="#0a8a96"/><stop offset="1" stop-color="#0a3a48"/></linearGradient>
             <radialGradient id="globeLit" cx=".38" cy=".35" r=".75"><stop offset="0" stop-color="#9ff"/><stop offset=".45" stop-color="#00e5e5"/><stop offset="1" stop-color="#064652"/></radialGradient>
@@ -282,12 +282,15 @@ footer .logo-mark { height: 34px; }
 
           <!-- Cables from the rack to each device -->
           <g id="cables" fill="none" stroke="#00e5e5" stroke-width="2">
-            <path class="cable" d="M418 456 H112"/>
             <path class="cable" d="M424 450 H270 V440"/>
-            <path class="cable" d="M476 450 H640 V452"/>
-            <path class="cable" d="M482 456 H788"/>
+            <path class="cable" d="M476 450 H680 V452"/>
             <path class="cable" d="M450 160 V156"/>
+            <path class="cable" d="M402 240 H128 V139"/>
+            <path class="cable" d="M498 240 H760 V146"/>
           </g>
+          <!-- Ceiling and pendant drops (behind the screens) -->
+          <line x1="0" y1="2" x2="900" y2="2" stroke="#95a3ad" stroke-width="2"/>
+          <g id="pendCables" stroke="#95a3ad" stroke-width="1.2" opacity="0"></g>
 
           <!-- LED wall: tight tiles, no gaps -->
           <g id="ledWall">
@@ -300,9 +303,22 @@ footer .logo-mark { height: 34px; }
           </g>
 
           <!-- Speakers, touch globe, kiosk -->
-          <g id="spkL" class="dev">
-            <rect x="92" y="330" width="40" height="130" rx="3" fill="#142231" stroke="#ffffff" stroke-width="2"/>
-            <circle cx="112" cy="352" r="7" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="112" cy="384" r="12" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="112" cy="424" r="14" fill="none" stroke="#00e5e5" stroke-width="2"/>
+          <!-- 16:9 LED screen, left of the wall -->
+          <g id="screenL" class="dev">
+            <rect x="40" y="40" width="176" height="99" fill="#142231" stroke="#ffffff" stroke-width="2"/>
+            <g id="screenLOn" opacity="0"><rect x="42" y="42" width="172" height="95" fill="url(#wallLit)"/><text x="128" y="96" text-anchor="middle" fill="#0a0f14" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="3">LIVE FEED · 16:9</text></g>
+          </g>
+          <!-- 2 x 75in portrait signage, right of the wall -->
+          <g id="signage" class="dev">
+            <rect x="694" y="34" width="62" height="112" rx="2" fill="#142231" stroke="#ffffff" stroke-width="2"/>
+            <rect x="776" y="34" width="62" height="112" rx="2" fill="#142231" stroke="#ffffff" stroke-width="2"/>
+            <g id="signageOn" opacity="0">
+              <rect x="697" y="37" width="56" height="106" fill="url(#kioskLit)"/><rect x="779" y="37" width="56" height="106" fill="url(#kioskLit)"/>
+              <rect x="705" y="50" width="40" height="5" fill="#0a0f14" opacity=".6"/><rect x="705" y="60" width="26" height="3" fill="#0a0f14" opacity=".4"/>
+              <rect x="787" y="50" width="40" height="5" fill="#0a0f14" opacity=".6"/><rect x="787" y="60" width="26" height="3" fill="#0a0f14" opacity=".4"/>
+              <circle cx="725" cy="110" r="12" fill="none" stroke="#0a0f14" stroke-width="2.5" opacity=".5"/><rect x="795" y="98" width="24" height="24" fill="none" stroke="#0a0f14" stroke-width="2.5" opacity=".5"/>
+            </g>
+            <text x="766" y="162" text-anchor="middle" fill="#95a3ad" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1.5">2 × 75" PORTRAIT</text>
           </g>
           <g id="globeDev" class="dev">
             <rect x="252" y="356" width="36" height="104" fill="#142231" stroke="#ffffff" stroke-width="2"/>
@@ -311,20 +327,17 @@ footer .logo-mark { height: 34px; }
             <circle id="globeGlow" cx="270" cy="310" r="45" fill="url(#globeLit)" opacity="0"/>
             <g fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1"><ellipse cx="270" cy="310" rx="20" ry="46"/><ellipse cx="270" cy="310" rx="38" ry="46"/><ellipse cx="270" cy="310" rx="46" ry="16"/></g>
           </g>
+          <!-- Touch kiosk -->
           <g id="kiosk" class="dev">
-            <rect x="600" y="452" width="80" height="8" fill="#ffffff"/>
-            <rect x="634" y="330" width="12" height="122" fill="#142231" stroke="#ffffff" stroke-width="2"/>
-            <rect x="606" y="218" width="68" height="114" rx="6" fill="#142231" stroke="#ffffff" stroke-width="2"/>
-            <g id="kioskScreen" opacity="0"><rect x="612" y="224" width="56" height="102" rx="3" fill="url(#kioskLit)"/><rect x="620" y="236" width="40" height="6" fill="#0a0f14" opacity=".6"/><rect x="620" y="250" width="28" height="4" fill="#0a0f14" opacity=".4"/><circle cx="640" cy="290" r="14" fill="none" stroke="#0a0f14" stroke-width="3" opacity=".6"/></g>
+            <path d="M652 460 L656 300 Q656 262 680 262 Q704 262 704 300 L708 460 Z" fill="#142231" stroke="#ffffff" stroke-width="2"/>
+            <rect x="663" y="282" width="34" height="88" rx="3" fill="#0a0f14" stroke="#95a3ad" stroke-width="1"/>
+            <rect x="668" y="388" width="24" height="5" rx="2" fill="#95a3ad"/>
+            <rect x="644" y="456" width="72" height="4" fill="#ffffff"/>
+            <g id="kioskScreen" opacity="0"><rect x="665" y="284" width="30" height="84" rx="2" fill="url(#kioskLit)"/><circle cx="680" cy="330" r="8" fill="none" stroke="#0a0f14" stroke-width="2" opacity=".6"/></g>
           </g>
-          <g id="spkR" class="dev">
-            <rect x="768" y="330" width="40" height="130" rx="3" fill="#142231" stroke="#ffffff" stroke-width="2"/>
-            <circle cx="788" cy="352" r="7" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="788" cy="384" r="12" fill="none" stroke="#00e5e5" stroke-width="2"/><circle cx="788" cy="424" r="14" fill="none" stroke="#00e5e5" stroke-width="2"/>
-          </g>
-          <g id="waves" opacity="0" fill="none" stroke="#00e5e5" stroke-width="2" stroke-linecap="round">
-            <path class="wave" d="M84 372 q-10 22 0 44"/><path class="wave w2" d="M72 362 q-20 32 0 64"/><path class="wave w3" d="M60 352 q-30 42 0 84"/>
-            <path class="wave" d="M816 372 q10 22 0 44"/><path class="wave w2" d="M828 362 q20 32 0 64"/><path class="wave w3" d="M840 352 q30 42 0 84"/>
-          </g>
+          <!-- Six pendant speakers -->
+          <g id="pendants"></g>
+          <g id="waves" opacity="0" fill="none" stroke="#00e5e5" stroke-width="2" stroke-linecap="round"></g>
 
           <!-- 47U rack (built in script) -->
           <g id="rack"><g id="rackBody"></g><g id="rackLabels"></g>
@@ -743,8 +756,22 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
   for (var r = 0; r < 3; r++) for (var c = 0; c < 8; c++)
     tiles.push(el('rect', { x: 230 + c * 55, y: 24 + r * 44, width: 55, height: 44, fill: '#142231', stroke: '#0a0f14', 'stroke-width': .4 }, tilesG));
 
+  // Six pendant speakers, equally spaced, hanging from the ceiling
+  var pendG = document.getElementById('pendants'), pendC = document.getElementById('pendCables'), wavesG = document.getElementById('waves');
+  var PEND_X = [75, 225, 375, 525, 675, 825], PEND_Y = 184;
+  PEND_X.forEach(function (x) {
+    el('line', { x1: x, y1: 2, x2: x, y2: PEND_Y }, pendC);
+    var g = el('g', {}, pendG);
+    el('path', { d: 'M' + (x - 10) + ' ' + PEND_Y + ' H' + (x + 10) + ' L' + (x + 15) + ' ' + (PEND_Y + 30) + ' H' + (x - 15) + ' Z', fill: '#142231', stroke: '#ffffff', 'stroke-width': 2 }, g);
+    el('ellipse', { cx: x, cy: PEND_Y + 30, rx: 15, ry: 3, fill: '#00e5e5' }, g);
+    [10, 20, 30].forEach(function (r, k) {
+      el('path', { class: 'wave' + (k ? ' w' + (k + 1) : ''), d: 'M' + (x - r) + ' ' + (PEND_Y + 38 + k * 6) + ' Q' + x + ' ' + (PEND_Y + 38 + k * 6 + r * .9) + ' ' + (x + r) + ' ' + (PEND_Y + 38 + k * 6) }, wavesG);
+    });
+  });
+  var pendants = pendG.querySelectorAll('g');
+
   var steps = document.querySelectorAll('#steps li'), label = document.getElementById('sceneLabel');
-  var labels = ['ON SITE · PRE-BUILT 47U RACK ARRIVES', 'INSIDE THE RACK · CONFIGURED IN DUBAI', 'INSTALL · LED WALL, GLOBE, KIOSK, SPEAKERS', 'LIVE · COMMISSIONED FROM DUBAI'];
+  var labels = ['ON SITE · PRE-BUILT 47U RACK ARRIVES', 'INSIDE THE RACK · CONFIGURED IN DUBAI', 'INSTALL · LED WALL, SCREENS, GLOBE, KIOSK, SPEAKERS', 'LIVE · COMMISSIONED FROM DUBAI'];
   function setStep(n) { steps.forEach(function (s, k) { s.classList.toggle('on', k === n); }); label.textContent = labels[n]; }
   var cables = document.querySelectorAll('#cables .cable');
   cables.forEach(function (p) { var L = p.getTotalLength ? p.getTotalLength() : 400; p.setAttribute('stroke-dasharray', L); p.setAttribute('stroke-dashoffset', L); p.dataset.len = L; });
@@ -758,7 +785,7 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
     document.getElementById('rack').setAttribute('transform', 'translate(450 460)');
     document.getElementById('crate').setAttribute('opacity', '0');
     cables.forEach(function (p) { p.setAttribute('stroke-dashoffset', 0); });
-    ['wallContent', 'waves', 'globeGlow', 'kioskScreen'].forEach(function (id) { document.getElementById(id).setAttribute('opacity', '1'); });
+    ['wallContent', 'waves', 'globeGlow', 'kioskScreen', 'screenLOn', 'signageOn', 'pendCables'].forEach(function (id) { document.getElementById(id).setAttribute('opacity', '1'); });
     lightAll(); setStep(3);
   } else {
     gsap.registerPlugin(ScrollTrigger);
@@ -793,19 +820,24 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
       gsap.set(t, { opacity: 0 });
       tl.to(t, { opacity: 1, duration: .15, ease: 'none' }, 8 + k * .04);
     });
-    tl.to(cables[4], { strokeDashoffset: 0, duration: .3 }, 9.1);
-    var devs = [['#spkL', 112, 395, 0], ['#globeDev', 270, 360, 1], ['#kiosk', 640, 340, 2], ['#spkR', 788, 395, 3]];
+    tl.to(cables[2], { strokeDashoffset: 0, duration: .3 }, 9.1);
+    var devs = [['#screenL', 3], ['#signage', 4], ['#globeDev', 0], ['#kiosk', 1]];
     devs.forEach(function (d, k) {
       gsap.set(d[0], { opacity: 0 });
-      tl.to(cables[d[3]], { strokeDashoffset: 0, duration: .5, ease: 'none' }, 9.5 + k * .35)
-        .to(d[0], { opacity: 1, duration: .3, ease: 'none' }, 9.9 + k * .35);
+      tl.to(cables[d[1]], { strokeDashoffset: 0, duration: .5, ease: 'none' }, 9.3 + k * .35)
+        .to(d[0], { opacity: 1, duration: .3, ease: 'none' }, 9.7 + k * .35);
     });
+    gsap.set(pendants, { opacity: 0, y: -30 });
+    tl.to('#pendCables', { opacity: 1, duration: .3 }, 10.6)
+      .to(pendants, { opacity: 1, y: 0, duration: .5, stagger: .08, ease: 'power2.out' }, 10.6);
 
     // 4. Everything comes alive
     tl.to(tiles, { attr: { fill: 'url(#wallLit)' }, duration: .05, stagger: { each: .03, from: 'center' } }, 11.4)
       .to('#wallContent', { opacity: 1, duration: .4 }, 12)
       .to('#globeGlow', { opacity: .9, duration: .5 }, 11.6)
       .to('#kioskScreen', { opacity: 1, duration: .4 }, 11.8)
+      .to('#screenLOn', { opacity: 1, duration: .4 }, 11.7)
+      .to('#signageOn', { opacity: 1, duration: .4 }, 11.9)
       .to('#waves', { opacity: 1, duration: .4 }, 12.1)
       .to({}, { duration: .8 });
   }
