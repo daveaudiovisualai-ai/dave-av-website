@@ -181,6 +181,9 @@ section { padding-block: clamp(56px, 6.5vw, 92px); }
 .partners { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .partner { background: var(--ink); min-height: 96px; display: grid; place-items: center; padding: 20px; text-align: center; font: 700 clamp(1.4rem, 2.4vw, 2rem)/1 var(--f-display); letter-spacing: .06em; text-transform: uppercase; color: #c9d3d8; transition: color .25s, background .25s; }
 .partner:hover { color: var(--cyan); background: var(--panel); }
+.partner.logo svg { width: min(72%, 170px); max-height: 34px; fill: currentColor; }
+.partner.logo[title="LG"] svg { max-height: 44px; }
+.partner small { display: block; margin-top: 8px; font: 400 .66rem/1.3 var(--f-mono); letter-spacing: .1em; color: var(--cyan); }
 .partner.more { font: 400 .8rem/1.4 var(--f-mono); letter-spacing: .12em; color: var(--muted); }
 .note { margin-top: 16px; font: 400 .78rem/1.5 var(--f-mono); color: var(--muted); }
 @media (max-width: 760px) { .partners { grid-template-columns: 1fr 1fr; } }
@@ -289,14 +292,14 @@ footer .logo-mark { height: 34px; }
           <span class="eyebrow">How we deliver</span>
           <h2 style="margin-top:16px">From the UK to your site</h2>
           <ol class="steps" id="steps">
-            <li class="on"><b>01 · Deliver</b><span>A 47U rack, pre-built and tested in the UK, arrives on site in its crate.</span></li>
-            <li><b>02 · Inside the rack</b><span>Every device is designed, specified and project managed on AI-driven platforms.</span></li>
-            <li><b>03 · Install</b><span>LED wall, screens, signage, touch globe, kiosks and pendant speakers connect back to the rack.</span></li>
-            <li><b>04 · Commission</b><span>We tune and test the system, then local partners maintain it with support from the UK.</span></li>
+            <li class="on"><b>01 · Deliver</b><span>2 × pre-configured 47U racks, built and tested in the UK, arrive on site.</span></li>
+            <li><b>02 · Inside the rack</b><span>Each rack is simply wheeled into place and connected via umbilicals to the first phase terminations.</span></li>
+            <li><b>03 · Install</b><span>Immersive room, LED walls, signage screens, audio and touchscreens connect back to the racks.</span></li>
+            <li><b>04 · Commission</b><span>We tune and test the system remotely, then local partners maintain it with support from the UK.</span></li>
           </ol>
           <button class="replay" id="replay" type="button">Replay animation</button>
         </div>
-        <svg class="scene" id="scene" viewBox="0 -70 900 590" role="img" aria-label="A forklift delivers a crated 47U rack; its equipment lights up, then an LED wall, a 16:9 screen, two portrait signage screens, a touch globe, three kiosks and six pendant speakers are connected from the rack">
+        <svg class="scene" id="scene" viewBox="0 -70 900 590" role="img" aria-label="A forklift delivers two crated 47U racks, which are wheeled into place and connected by umbilicals to the first phase terminations; their equipment lights up, then an LED wall, a 16:9 screen, two portrait signage screens, a touch globe, three kiosks and six pendant speakers are connected from the rack">
           <defs>
             <linearGradient id="wallLit" gradientUnits="userSpaceOnUse" x1="230" y1="24" x2="670" y2="156"><stop offset="0" stop-color="#00e5e5"/><stop offset=".55" stop-color="#0a8a96"/><stop offset="1" stop-color="#0a3a48"/></linearGradient>
             <radialGradient id="globeLit" cx=".38" cy=".35" r=".75"><stop offset="0" stop-color="#9ff"/><stop offset=".45" stop-color="#00e5e5"/><stop offset="1" stop-color="#064652"/></radialGradient>
@@ -305,7 +308,7 @@ footer .logo-mark { height: 34px; }
           </defs>
           <rect x="0" y="-70" width="900" height="530" fill="url(#grid)" opacity=".45"/>
           <line x1="0" y1="460" x2="900" y2="460" stroke="#95a3ad" stroke-width="2"/>
-          <text x="20" y="492" fill="#95a3ad" font-family="IBM Plex Mono, monospace" font-size="13" letter-spacing="2" id="sceneLabel">ON SITE · PRE-BUILT 47U RACK ARRIVES</text>
+          <text x="20" y="492" fill="#95a3ad" font-family="IBM Plex Mono, monospace" font-size="13" letter-spacing="2" id="sceneLabel">ON SITE · 2 × 47U RACKS ARRIVE</text>
 
           <!-- Cables from the rack to each device -->
           <g id="cables" fill="none" stroke="#00e5e5" stroke-width="2">
@@ -384,14 +387,32 @@ footer .logo-mark { height: 34px; }
           <g id="pendants"></g>
           <g id="waves" opacity="0" fill="none" stroke="#00e5e5" stroke-width="2" stroke-linecap="round"></g>
 
-          <!-- 47U rack (built in script) -->
-          <g id="rack"><g id="rackBody"></g><g id="rackLabels"></g>
-            <g id="crate">
+          <!-- First phase terminations and the umbilicals that plug the racks into them -->
+          <g id="terms" opacity="0">
+            <rect x="560" y="468" width="170" height="22" fill="#0e161e" stroke="#00e5e5" stroke-width="1.5"/>
+            <g fill="#00e5e5"><rect x="568" y="476" width="6" height="6"/><rect x="578" y="476" width="6" height="6"/><rect x="588" y="476" width="6" height="6"/><rect x="598" y="476" width="6" height="6"/></g>
+            <text x="612" y="483" fill="#ffffff" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1">PHASE 1 TERMINATIONS</text>
+          </g>
+          <g id="umbilicals" fill="none" stroke="#00e5e5" stroke-width="4" stroke-linecap="round">
+            <path class="umb" d="M395 458 V474 Q395 478 399 478 H562"/>
+            <path class="umb" d="M505 458 V470 Q505 473 509 473 H562"/>
+          </g>
+
+          <!-- Two 47U racks (built in script); the right one carries the equipment labels -->
+          <g id="rack2"><g class="rackBody"></g>
+            <g class="crate"><rect x="-68" y="-318" width="136" height="316" fill="#1b2a35" stroke="#ffffff" stroke-width="2"/>
+              <g stroke="#2e4250" stroke-width="2"><line x1="-68" y1="-250" x2="68" y2="-250"/><line x1="-68" y1="-180" x2="68" y2="-180"/><line x1="-68" y1="-110" x2="68" y2="-110"/><line x1="-68" y1="-40" x2="68" y2="-40"/><line x1="-68" y1="-318" x2="68" y2="-2"/></g>
+              <rect x="-68" y="-318" width="136" height="12" fill="#00e5e5"/><rect x="-68" y="-14" width="136" height="12" fill="#00e5e5"/>
+              <text x="0" y="-150" text-anchor="middle" fill="#ffffff" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="800" font-size="30" letter-spacing="4">DAVE</text>
+              <text x="0" y="-128" text-anchor="middle" fill="#95a3ad" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2">47U RACK</text></g>
+          </g>
+          <g id="rack"><g id="rackBody" class="rackBody"></g><g id="rackLabels"></g>
+            <g class="crate">
               <rect x="-68" y="-318" width="136" height="316" fill="#1b2a35" stroke="#ffffff" stroke-width="2"/>
               <g stroke="#2e4250" stroke-width="2"><line x1="-68" y1="-250" x2="68" y2="-250"/><line x1="-68" y1="-180" x2="68" y2="-180"/><line x1="-68" y1="-110" x2="68" y2="-110"/><line x1="-68" y1="-40" x2="68" y2="-40"/><line x1="-68" y1="-318" x2="68" y2="-2"/></g>
               <rect x="-68" y="-318" width="136" height="12" fill="#00e5e5"/><rect x="-68" y="-14" width="136" height="12" fill="#00e5e5"/>
               <text x="0" y="-150" text-anchor="middle" fill="#ffffff" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="800" font-size="30" letter-spacing="4">DAVE</text>
-              <text x="0" y="-128" text-anchor="middle" fill="#95a3ad" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2">47U · THIS WAY UP</text>
+              <text x="0" y="-128" text-anchor="middle" fill="#95a3ad" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2">47U RACK</text>
             </g>
           </g>
 
@@ -399,7 +420,7 @@ footer .logo-mark { height: 34px; }
           <g id="forklift">
             <rect x="-150" y="-215" width="10" height="215" fill="#95a3ad"/>
             <rect x="-136" y="-215" width="10" height="215" fill="#95a3ad"/>
-            <g id="forks"><rect x="-126" y="-14" width="110" height="8" fill="#00e5e5"/><rect x="-130" y="-60" width="8" height="54" fill="#00e5e5"/></g>
+            <g id="forks"><rect x="-126" y="-14" width="268" height="8" fill="#00e5e5"/><rect x="-130" y="-60" width="8" height="54" fill="#00e5e5"/></g>
             <path d="M-140 -120 H-250 V-40 H-140 Z" fill="none" stroke="#ffffff" stroke-width="3"/>
             <path d="M-250 -40 H-120 V-6 H-262 V-40 Z" fill="#00e5e5"/>
             <rect x="-290" y="-74" width="40" height="40" fill="#142231" stroke="#ffffff" stroke-width="2"/>
@@ -438,7 +459,7 @@ footer .logo-mark { height: 34px; }
             <li><b>AI project management.</b> Programme, procurement and progress run on one AI-driven platform you can see.</li>
             <li><b>Pre-built in the UK.</b> Racks arrive assembled, wired and tested, ready to install.</li>
             <li><b>AI simulation.</b> Acoustic, sightline and coverage modelling signed off before install.</li>
-            <li><b>Programming files.</b> Control, DSP and network configurations ready to load.</li>
+            <li><b>Programming files.</b> Control, DSP, lighting and network configurations, pre-configured, tested and commissioned.</li>
             <li><b>Remote commissioning.</b> Our engineers test and tune with your team from Dubai.</li>
             <li><b>Ongoing support.</b> Service and maintenance programmes supported globally from the UK, with monitoring and a direct line to the design team.</li>
           </ul>
@@ -465,20 +486,20 @@ footer .logo-mark { height: 34px; }
         <p class="lede">We specify and deliver with the manufacturers and distributors we know best.</p>
       </div>
       <div class="partners">
-        <div class="partner">Samsung</div>
-        <div class="partner">Bose</div>
-        <div class="partner">LG</div>
+        <div class="partner logo" title="Samsung"><svg viewBox="0 10.166 24 3.668" role="img" aria-label="Samsung"><path d="M19.8166 10.2808l.0459 2.6934h-.023l-.7793-2.6934h-1.2837v3.3925h.8481l-.0458-2.785h.023l.8366 2.785h1.2264v-3.3925zm-16.149 0l-.6418 3.427h.9284l.4699-3.1175h.0229l.4585 3.1174h.9169l-.6304-3.4269zm5.1805 0l-.424 2.6132h-.023l-.424-2.6132H6.5788l-.0688 3.427h.8596l.023-3.0832h.0114l.573 3.0831h.8711l.5731-3.083h.023l.0228 3.083h.8596l-.0802-3.4269zm-7.2664 2.4527c.0343.0802.0229.1949.0114.2522-.0229.1146-.1031.2292-.3324.2292-.2177 0-.3438-.126-.3438-.3095v-.3323H0v.2636c0 .7679.6074.9971 1.2493.9971.6189 0 1.1346-.2178 1.2149-.7794.0458-.298.0114-.4928 0-.5616-.1605-.722-1.467-.9283-1.5588-1.3295-.0114-.0688-.0114-.1375 0-.1834.023-.1146.1032-.2292.3095-.2292.2063 0 .321.126.321.3095v.2063h.8595v-.2407c0-.745-.6762-.8596-1.1576-.8596-.6074 0-1.1117.2063-1.2034.7564-.023.149-.0344.2866.0114.4585.1376.7106 1.364.9169 1.5358 1.3524m11.152 0c.0343.0803.0228.1834.0114.2522-.023.1146-.1032.2292-.3324.2292-.2178 0-.3438-.126-.3438-.3095v-.3323h-.917v.2636c0 .7564.596.9857 1.2379.9857.6189 0 1.1232-.2063 1.2034-.7794.0459-.298.0115-.4814 0-.5616-.1375-.7106-1.4327-.9284-1.5243-1.318-.0115-.0688-.0115-.1376 0-.1835.0229-.1146.1031-.2292.3094-.2292.1948 0 .321.126.321.3095v.2063h.848v-.2407c0-.745-.6647-.8596-1.146-.8596-.6075 0-1.1004.1948-1.192.7564-.023.149-.023.2866.0114.4585.1376.7106 1.341.9054 1.513 1.3524m2.8882.4585c.2407 0 .3094-.1605.3323-.2522.0115-.0343.0115-.0917.0115-.126v-2.533h.871v2.4642c0 .0688 0 .1948-.0114.2292-.0573.6419-.5616.8482-1.192.8482-.6303 0-1.1346-.2063-1.192-.8482 0-.0344-.0114-.1604-.0114-.2292v-2.4642h.871v2.533c0 .0458 0 .0916.0115.126 0 .0917.0688.2522.3095.2522m7.1518-.0344c.2522 0 .3324-.1605.3553-.2522.0115-.0343.0115-.0917.0115-.126v-.4929h-.3553v-.5043H24v.917c0 .0687 0 .1145-.0115.2292-.0573.6303-.596.8481-1.2034.8481-.6075 0-1.1461-.2178-1.2034-.8481-.0115-.1147-.0115-.1605-.0115-.2293v-1.444c0-.0574.0115-.172.0115-.2293.0802-.6419.596-.8482 1.2034-.8482s1.1347.2063 1.2034.8482c.0115.1031.0115.2292.0115.2292v.1146h-.8596v-.1948s0-.0803-.0115-.1261c-.0114-.0802-.0802-.2521-.3438-.2521-.2521 0-.321.1604-.3438.2521-.0115.0458-.0115.1032-.0115.1605v1.5702c0 .0458 0 .0916.0115.126 0 .0917.0917.2522.3323.2522"/></svg></div>
+        <div class="partner logo" title="Bose"><svg viewBox="0 10.587 24 2.826" role="img" aria-label="Bose"><path d="M14.052 10.589a.69.69 0 0 0-.588.332l-.54.915c-.114.19.036.399.235.399h1.873l-.336.568a.274.274 0 0 1-.24.139h-.29a.113.113 0 0 1-.102-.164c.035-.062.112-.19.112-.19h-1.699l-.246.418c-.115.194.038.405.232.405h3.174a.692.692 0 0 0 .598-.34c.12-.206.405-.69.527-.896.123-.205-.032-.41-.228-.41h-1.873l.347-.586a.276.276 0 0 1 .231-.123h.292c.095 0 .135.102.105.155-.03.053-.117.199-.117.199h1.696l.254-.43c.094-.16-.023-.392-.24-.392h-3.18.003zm-1.344 0H9.537c-.23 0-.47.12-.592.329-.124.207-1.13 1.911-1.24 2.096-.109.185.042.397.236.397h3.177c.255 0 .48-.141.592-.33.111-.188 1.13-1.915 1.237-2.094.106-.18-.03-.4-.24-.4v.002zm-1.598.636c-.045.076-.89 1.505-.936 1.585a.276.276 0 0 1-.236.134h-.295c-.094 0-.138-.102-.102-.163l.94-1.592a.274.274 0 0 1 .235-.13h.296c.085 0 .143.091.097.167l.001-.001zm-2.919-.636H4.61l-1.39 2.354H0v.47h6.598a.69.69 0 0 0 .596-.336l.41-.697c.085-.145-.004-.331-.164-.379a.703.703 0 0 0 .583-.329c.115-.193.298-.506.402-.682a.266.266 0 0 0-.234-.4v-.001zM6.29 12.402l-.243.411a.267.267 0 0 1-.233.132h-.9l.419-.708h.857a.11.11 0 0 1 .099.166zm.694-1.178-.242.41a.266.266 0 0 1-.233.131h-.9l.418-.708h.858c.09 0 .14.093.098.167h.001zm11.194-.635-1.667 2.823h4.042l.276-.469h-2.345l.418-.707h2.345l.278-.47H19.18l.418-.709H24v-.468h-5.822z"/></svg></div>
+        <div class="partner logo" title="LG"><svg viewBox="-0.002 6.709 24.002 10.582" role="img" aria-label="LG"><path d="M14.522 14.078h3.27v1.33h-4.847v-6.83h1.577v5.5zm6.74-1.274h1.284v1.195c-.236.09-.698.18-1.137.18-1.42 0-1.893-.721-1.893-2.186 0-1.398.45-2.221 1.869-2.221.791 0 1.24.248 1.612.722l.982-.903c-.6-.855-1.646-1.114-2.629-1.114-2.208 0-3.368 1.205-3.368 3.504 0 2.288 1.047 3.528 3.358 3.528 1.06 0 2.096-.27 2.66-.665V11.53h-2.739v1.274zM5.291 6.709a5.29 5.29 0 1 1 0 10.582 5.291 5.291 0 1 1 0-10.582m3.16 8.457a4.445 4.445 0 0 0 1.31-3.161v-.242l-.22.001H6.596v.494h2.662l-.001.015a3.985 3.985 0 0 1-3.965 3.708 3.95 3.95 0 0 1-2.811-1.165 3.952 3.952 0 0 1-1.164-2.811c0-1.061.414-2.059 1.164-2.81a3.951 3.951 0 0 1 2.81-1.164l.252.003v-.495l-.251-.003a4.475 4.475 0 0 0-4.47 4.469c0 1.194.465 2.316 1.309 3.161a4.444 4.444 0 0 0 3.16 1.31 4.444 4.444 0 0 0 3.162-1.31m-2.91-1.297V9.644H5.04v4.72h1.556v-.495H5.543zm-1.265-3.552a.676.676 0 1 0-.675.674.676.676 0 0 0 .675-.674"/></svg></div>
         <div class="partner">Biamp</div>
         <div class="partner">Pufferfish</div>
-        <div class="partner">Midwich Group</div>
+        <div class="partner">Midwich Group<small>Distribution and logistics partner</small></div>
         <div class="partner">HIVE</div>
         <div class="partner">Turtle AV</div>
-        <div class="partner">Netgear</div>
+        <div class="partner logo" title="Netgear"><svg viewBox="0 10.326 24 3.348" role="img" aria-label="Netgear"><path d="M11.496 12.459h.678c-.035.362-.296.545-.67.545-.566 0-.849-.496-.849-.982 0-.479.244-.991.811-.991.347 0 .598.2.716.499l.817-.324c-.285-.588-.813-.88-1.493-.88-1.068 0-1.746.672-1.746 1.691 0 .987.699 1.657 1.74 1.657.555 0 1.017-.186 1.341-.616.295-.391.329-.782.338-1.24h-1.683v.641ZM6.86 11.122h.833v2.449h.874v-2.449h.834v-.692H6.86v.692Zm-4.565 1.229h-.009L.861 10.43H0v3.141h.861v-1.924H.87l1.425 1.924h.861V10.43h-.861v1.921Zm15.414-1.921-1.157 3.141h.889l.19-.578h1.149l.189.578h.889l-1.156-3.141h-.993ZM4.174 13.571h2.098v-.691H5.036v-.543h1.185v-.69H5.036v-.525h1.236v-.692H4.174v3.141Zm9.761 0h2.099v-.691h-1.237v-.543h1.185v-.69h-1.185v-.525h1.237v-.692h-2.099v3.141Zm8.954-2.174c0-.67-.497-.967-1.15-.967h-1.34v3.141h.86v-1.208h.062l.785 1.208h1.046l-.987-1.287c.47-.079.724-.453.724-.887Zm-5.054.971.358-1.096h.024l.359 1.096h-.741Zm3.646-.53h-.222v-.782h.247c.282 0 .522.049.522.391s-.265.391-.547.391Zm2.133-1.408c-.202 0-.386.157-.386.378 0 .218.186.38.386.38.202 0 .386-.16.386-.38 0-.225-.18-.378-.386-.378Zm0 .688c-.164 0-.315-.13-.315-.31 0-.183.149-.311.316-.311.164 0 .316.132.316.311 0 .183-.15.31-.317.31Zm.184-.404c0-.104-.101-.122-.174-.122h-.161v.416h.11v-.164h.033l.075.164h.121l-.089-.182c.049-.016.085-.054.085-.112Zm-.185.061h-.04v-.111h.033c.037 0 .079.006.079.057 0 .045-.039.054-.072.054Z"/></svg></div>
         <div class="partner">Q-SYS</div>
         <div class="partner more">and more</div>
         <div class="partner more">Your brand?<br>Talk to us</div>
       </div>
-      <p class="note">Brand names are shown as text. Official logos will be added once each partner approves their use.</p>
+      <p class="note">Logos are trademarks of their respective owners.</p>
     </div>
   </section>
 
@@ -785,32 +806,39 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
   function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
 
   // Rack drawn around its bottom-centre (0,0): 47U interior = 280px, about 5.96px per U
-  var body = document.getElementById('rackBody'), labelsG = document.getElementById('rackLabels');
+  var labelsG = document.getElementById('rackLabels');
   var UPX = 280 / 47, TOP = -290;
-  el('rect', { x: -52, y: -302, width: 104, height: 300, fill: '#0e161e', stroke: '#ffffff', 'stroke-width': 2 }, body);
-  el('rect', { x: -44, y: TOP, width: 4, height: 280, fill: '#22313e' }, body);
-  el('rect', { x: 40, y: TOP, width: 4, height: 280, fill: '#22313e' }, body);
-  for (var u = 0; u <= 47; u++) el('line', { x1: -40, x2: 40, y1: TOP + u * UPX, y2: TOP + u * UPX, stroke: '#16222c', 'stroke-width': .6 }, body);
-  el('rect', { x: -48, y: -2, width: 14, height: 4, fill: '#95a3ad' }, body); el('rect', { x: 34, y: -2, width: 14, height: 4, fill: '#95a3ad' }, body);
-
   // Equipment: [label, start U from top, height in U]
   var KIT = [
     ['Patch panels', 1, 2], ['AV network switch (Dante)', 4, 1], ['Control processor', 6, 1], ['Audio DSP', 8, 2],
     ['LED video processor', 11, 2], ['Media servers', 14, 4], ['Amplifiers', 19, 4], ['Remote monitoring gateway', 24, 1],
     ['Power management', 27, 2], ['UPS', 40, 5]
   ];
-  var units = KIT.map(function (k, i) {
-    var y = TOP + k[1] * UPX + .5, h = k[2] * UPX - 1, g = el('g', {}, body);
-    var box = el('rect', { x: -40, y: y, width: 80, height: h, fill: '#1a2733', stroke: '#2b3b49', 'stroke-width': .8 }, g);
-    var led = el('rect', { x: 28, y: y + h / 2 - 1.2, width: 6, height: 2.4, fill: '#2b3b49' }, g);
-    for (var v = 0; v < 4; v++) el('rect', { x: -34 + v * 10, y: y + h / 2 - .8, width: 6, height: 1.6, fill: '#2b3b49' }, g);
-    var lab = el('g', { opacity: 0 }, labelsG);
-    el('line', { x1: 52, y1: y + h / 2, x2: 86, y2: y + h / 2, stroke: '#00e5e5', 'stroke-width': 1.5 }, lab);
-    el('circle', { cx: 52, cy: y + h / 2, r: 2.5, fill: '#00e5e5' }, lab);
-    var tx = el('text', { x: 92, y: y + h / 2 + 4, fill: '#ffffff', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 12, 'letter-spacing': 1 }, lab);
-    tx.textContent = k[0].toUpperCase();
-    return { box: box, led: led, lab: lab };
-  });
+  function buildRack(body, withLabels) {
+    el('rect', { x: -52, y: -302, width: 104, height: 300, fill: '#0e161e', stroke: '#ffffff', 'stroke-width': 2 }, body);
+    el('rect', { x: -44, y: TOP, width: 4, height: 280, fill: '#22313e' }, body);
+    el('rect', { x: 40, y: TOP, width: 4, height: 280, fill: '#22313e' }, body);
+    for (var u = 0; u <= 47; u++) el('line', { x1: -40, x2: 40, y1: TOP + u * UPX, y2: TOP + u * UPX, stroke: '#16222c', 'stroke-width': .6 }, body);
+    // Castors
+    [-38, 38].forEach(function (x) { el('circle', { cx: x, cy: 2, r: 4, fill: '#0a0f14', stroke: '#95a3ad', 'stroke-width': 2 }, body); });
+    return KIT.map(function (k) {
+      var y = TOP + k[1] * UPX + .5, h = k[2] * UPX - 1, g = el('g', {}, body);
+      var box = el('rect', { x: -40, y: y, width: 80, height: h, fill: '#1a2733', stroke: '#2b3b49', 'stroke-width': .8 }, g);
+      var led = el('rect', { x: 28, y: y + h / 2 - 1.2, width: 6, height: 2.4, fill: '#2b3b49' }, g);
+      for (var v = 0; v < 4; v++) el('rect', { x: -34 + v * 10, y: y + h / 2 - .8, width: 6, height: 1.6, fill: '#2b3b49' }, g);
+      var lab = null;
+      if (withLabels) {
+        lab = el('g', { opacity: 0 }, labelsG);
+        el('line', { x1: 52, y1: y + h / 2, x2: 86, y2: y + h / 2, stroke: '#00e5e5', 'stroke-width': 1.5 }, lab);
+        el('circle', { cx: 52, cy: y + h / 2, r: 2.5, fill: '#00e5e5' }, lab);
+        var tx = el('text', { x: 92, y: y + h / 2 + 4, fill: '#ffffff', 'font-family': 'IBM Plex Mono, monospace', 'font-size': 12, 'letter-spacing': 1 }, lab);
+        tx.textContent = k[0].toUpperCase();
+      }
+      return { box: box, led: led, lab: lab };
+    });
+  }
+  var units = buildRack(document.getElementById('rackBody'), true);
+  var units2 = buildRack(document.querySelector('#rack2 .rackBody'), false);
 
   // LED wall: 8 x 3 tiles, edge to edge
   var tilesG = document.getElementById('tiles'), tiles = [];
@@ -832,77 +860,88 @@ var LAND = [-544,-701,-544,-673,-528,-715,-528,-688,-512,-728,-512,-702,-496,-74
   var pendants = pendG.querySelectorAll('g');
 
   var steps = document.querySelectorAll('#steps li'), label = document.getElementById('sceneLabel');
-  var labels = ['ON SITE · PRE-BUILT 47U RACK ARRIVES', 'INSIDE THE RACK · PRE-BUILT IN THE UK', 'INSTALL · LED WALL, SCREENS, GLOBE, KIOSKS, SPEAKERS', 'LIVE · COMMISSIONED FROM DUBAI'];
+  var labels = ['ON SITE · 2 × 47U RACKS ARRIVE', 'WHEELED IN · UMBILICALS CONNECTED', 'INSTALL · ROOM CONNECTS TO RACKS', 'LIVE · COMMISSIONED REMOTELY'];
   function setStep(n) { steps.forEach(function (s, k) { s.classList.toggle('on', k === n); }); label.textContent = labels[n]; }
-  var cables = document.querySelectorAll('#cables .cable');
-  cables.forEach(function (p) { var L = p.getTotalLength ? p.getTotalLength() : 400; p.setAttribute('stroke-dasharray', L); p.setAttribute('stroke-dashoffset', L); p.dataset.len = L; });
+  var cables = document.querySelectorAll('#cables .cable'), umbs = document.querySelectorAll('#umbilicals .umb');
+  [].slice.call(cables).concat([].slice.call(umbs)).forEach(function (p) { var L = p.getTotalLength ? p.getTotalLength() : 400; p.setAttribute('stroke-dasharray', L); p.setAttribute('stroke-dashoffset', L); p.dataset.len = L; });
   function lightAll() {
-    units.forEach(function (u) { u.box.setAttribute('fill', '#13414a'); u.box.setAttribute('stroke', '#00e5e5'); u.led.setAttribute('fill', '#00e5e5'); });
+    units.concat(units2).forEach(function (u) { u.box.setAttribute('fill', '#13414a'); u.box.setAttribute('stroke', '#00e5e5'); u.led.setAttribute('fill', '#00e5e5'); });
     tiles.forEach(function (t) { t.setAttribute('fill', 'url(#wallLit)'); });
   }
 
   if (!hasGsap || reduce) {
     document.getElementById('replay').hidden = true;
     document.getElementById('forklift').setAttribute('transform', 'translate(-400 460)');
-    document.getElementById('rack').setAttribute('transform', 'translate(450 460)');
-    document.getElementById('crate').setAttribute('opacity', '0');
+    document.getElementById('rack').setAttribute('transform', 'translate(505 460)');
+    document.getElementById('rack2').setAttribute('transform', 'translate(395 460)');
+    document.querySelectorAll('#scene .crate').forEach(function (c) { c.setAttribute('opacity', '0'); });
+    document.getElementById('terms').setAttribute('opacity', '1');
     cables.forEach(function (p) { p.setAttribute('stroke-dashoffset', 0); });
+    umbs.forEach(function (p) { p.setAttribute('stroke-dashoffset', 0); });
     ['wallContent', 'waves', 'globeGlow', 'kioskScreen', 'screenLOn', 'signageOn', 'pendCables'].forEach(function (id) { document.getElementById(id).setAttribute('opacity', '1'); });
     document.querySelectorAll('#scene .kOn').forEach(function (g) { g.setAttribute('opacity', '1'); });
     lightAll(); setStep(3);
   } else {
-    var STEP_AT = [0, 4.5, 8, 11.4];
+    var STEP_AT = [0, 4.5, 9.2, 12.6];
     var tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut' },
       onUpdate: function () { var t = tl.time(), n = 0; STEP_AT.forEach(function (s, k) { if (t >= s) n = k; }); setStep(n); } });
     whenVisible(document.getElementById('scene'), function () { tl.play(0); });
     document.getElementById('replay').addEventListener('click', function () { tl.play(0); });
     steps.forEach(function (li, k) { li.addEventListener('click', function () { tl.play(STEP_AT[k]); }); });
+    // Both crates ride on the forks: crate centres sit 136 apart, ahead of the mast
     gsap.set('#forklift', { x: -330, y: 460 });
-    gsap.set('#rack', { x: -401, y: 446 });
+    gsap.set('#rack2', { x: -385, y: 446 });
+    gsap.set('#rack', { x: -249, y: 446 });
 
-    // 1. Forklift brings the rack in, lowers it, reverses out
-    tl.to('#forklift', { x: 521, duration: 2 }, 0)
-      .to('#rack', { x: 450, duration: 2 }, 0)
+    // 1. Forklift brings both racks in, lowers them, reverses out, crates lift off
+    tl.to('#forklift', { x: 385, duration: 2 }, 0)
+      .to('#rack2', { x: 330, duration: 2 }, 0)
+      .to('#rack', { x: 466, duration: 2 }, 0)
       .to('#forks', { y: 10, duration: .6 }, 2)
-      .to('#rack', { y: 460, duration: .6 }, 2)
+      .to(['#rack', '#rack2'], { y: 460, duration: .6 }, 2)
       .to('#forklift', { x: -420, duration: 1.6, ease: 'power2.in' }, 2.7)
-      .to('#crate', { y: -340, opacity: 0, duration: 1, ease: 'power2.in' }, 3.4);
+      .to('#scene .crate', { y: -340, opacity: 0, duration: 1, ease: 'power2.in', stagger: .15 }, 3.4);
 
-    // 2. Each piece of equipment lights up with its label
+    // 2. Racks are wheeled into place and plugged into the first phase terminations by umbilicals
+    tl.to('#rack2', { x: 395, duration: 1, ease: 'power1.inOut' }, 4.5)
+      .to('#rack', { x: 505, duration: 1, ease: 'power1.inOut' }, 4.6)
+      .to('#terms', { opacity: 1, duration: .4 }, 5.4);
+    umbs.forEach(function (p, k) { tl.to(p, { strokeDashoffset: 0, duration: .5, ease: 'none' }, 5.7 + k * .2); });
+    // then each piece of equipment lights up in both racks, labelled on the right one
     units.forEach(function (u, i) {
-      var at = 4.5 + i * .33;
-      tl.to(u.box, { attr: { fill: '#13414a', stroke: '#00e5e5' }, duration: .15 }, at)
-        .to(u.led, { attr: { fill: '#00e5e5' }, duration: .1 }, at)
+      var at = 6.5 + i * .26, u2 = units2[i];
+      tl.to([u.box, u2.box], { attr: { fill: '#13414a', stroke: '#00e5e5' }, duration: .15 }, at)
+        .to([u.led, u2.led], { attr: { fill: '#00e5e5' }, duration: .1 }, at)
         .to(u.lab, { opacity: 1, duration: .12 }, at)
-        .to(u.lab, { opacity: 0, duration: .12 }, at + .3);
+        .to(u.lab, { opacity: 0, duration: .12 }, at + .24);
     });
 
     // 3. LED wall tiles fly up from the rack and lock together, then devices emanate from the rack
     tiles.forEach(function (t, k) {
       var tx = +t.getAttribute('x') + 27.5, ty = +t.getAttribute('y') + 22;
       gsap.set(t, { opacity: 0 });
-      tl.to(t, { opacity: 1, duration: .15, ease: 'none' }, 8 + k * .04);
+      tl.to(t, { opacity: 1, duration: .15, ease: 'none' }, 9.2 + k * .04);
     });
-    tl.to(cables[2], { strokeDashoffset: 0, duration: .3 }, 9.1);
+    tl.to(cables[2], { strokeDashoffset: 0, duration: .3 }, 10.3);
     var devs = [['#screenL', 3], ['#signage', 4], ['#totemL', 5], ['#globeDev', 0], ['#kiosk', 1], ['#totemR', 6]];
     devs.forEach(function (d, k) {
       gsap.set(d[0], { opacity: 0 });
-      tl.to(cables[d[1]], { strokeDashoffset: 0, duration: .45, ease: 'none' }, 9.2 + k * .25)
-        .to(d[0], { opacity: 1, duration: .3, ease: 'none' }, 9.55 + k * .25);
+      tl.to(cables[d[1]], { strokeDashoffset: 0, duration: .45, ease: 'none' }, 10.4 + k * .25)
+        .to(d[0], { opacity: 1, duration: .3, ease: 'none' }, 10.75 + k * .25);
     });
     gsap.set(pendants, { opacity: 0, y: -30 });
-    tl.to('#pendCables', { opacity: 1, duration: .3 }, 10.8)
-      .to(pendants, { opacity: 1, y: 0, duration: .5, stagger: .08, ease: 'power2.out' }, 10.8);
+    tl.to('#pendCables', { opacity: 1, duration: .3 }, 12)
+      .to(pendants, { opacity: 1, y: 0, duration: .5, stagger: .08, ease: 'power2.out' }, 12);
 
     // 4. Everything comes alive
-    tl.to(tiles, { attr: { fill: 'url(#wallLit)' }, duration: .05, stagger: { each: .03, from: 'center' } }, 11.4)
-      .to('#wallContent', { opacity: 1, duration: .4 }, 12)
-      .to('#globeGlow', { opacity: .9, duration: .5 }, 11.6)
-      .to('#kioskScreen', { opacity: 1, duration: .4 }, 11.8)
-      .to('#screenLOn', { opacity: 1, duration: .4 }, 11.7)
-      .to('#signageOn', { opacity: 1, duration: .4 }, 11.9)
-      .to('#scene .kOn', { opacity: 1, duration: .4 }, 11.8)
-      .to('#waves', { opacity: 1, duration: .4 }, 12.1)
+    tl.to(tiles, { attr: { fill: 'url(#wallLit)' }, duration: .05, stagger: { each: .03, from: 'center' } }, 12.6)
+      .to('#wallContent', { opacity: 1, duration: .4 }, 13.2)
+      .to('#globeGlow', { opacity: .9, duration: .5 }, 12.8)
+      .to('#kioskScreen', { opacity: 1, duration: .4 }, 13)
+      .to('#screenLOn', { opacity: 1, duration: .4 }, 12.9)
+      .to('#signageOn', { opacity: 1, duration: .4 }, 13.1)
+      .to('#scene .kOn', { opacity: 1, duration: .4 }, 13)
+      .to('#waves', { opacity: 1, duration: .4 }, 13.3)
       .to({}, { duration: .8 });
   }
 
