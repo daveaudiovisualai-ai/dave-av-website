@@ -1,0 +1,23 @@
+# DAVE (dave-av.ai)
+
+> DAVE designs and project manages audio visual (AV) projects on AI-driven platforms. Pre-configured, tested 47U rack systems are built in the UK and delivered worldwide, then installed and maintained by local integration partners with support from the UK. DAVE is headquartered in Dubai, UAE, and is the technology and installation partner to MultiVRZ.
+
+## What DAVE does
+- AV system design: full design package with drawings, schematics, rack layouts, cable schedules and a bill of materials.
+- AI project management: programme, procurement and progress run on one AI-driven platform shared with partners.
+- Pre-built in the UK: 2 x pre-configured 47U racks per site, assembled, wired and tested, then wheeled into place and connected by umbilicals to the first phase terminations.
+- AI simulation: acoustic, sightline and coverage modelling signed off before install.
+- Programming files: control, DSP, lighting and network configurations, pre-configured, tested and commissioned.
+- Remote commissioning from the UK, then service and maintenance programmes delivered by local partners and supported globally from the UK.
+- Typical systems: immersive rooms, seamless LED walls, digital signage screens, touchscreen kiosks and touch globes, media players and video over IP, pendant speakers and stage lighting.
+
+## Pipeline
+- A pipeline portfolio of 450+ sites within the next five years, located in premium shopping malls worldwide.
+- Client and partner: MultiVRZ (DAVE is MultiVRZ's AV technology and installation partner).
+
+## Working with DAVE
+- DAVE is recruiting AV integration partners for installation, service and maintenance in Europe, Asia Pacific, the GCC, the USA and Canada.
+- Technology partners: Samsung, LG, Bose, Biamp, Q-SYS, Pufferfish, Netgear, HIVE, Turtle AV. Midwich Group is the distribution and logistics partner.
+- Contact: hello@dave-av.ai
+- Website: https://dave-av.ai/
+- Client portal: https://portal.dave-av.ai/
