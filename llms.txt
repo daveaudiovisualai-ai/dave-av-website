@@ -1,6 +1,6 @@
 # DAVE (dave-av.ai)
 
-> DAVE designs and project manages audio visual (AV) projects on AI-driven platforms. Pre-configured, tested 47U rack systems are built in the UK and delivered worldwide, then installed and maintained by local integration partners with support from the UK. DAVE is headquartered in Dubai, UAE, and is the technology and installation partner to MultiVRZ.
+> DAVE designs and project manages audio visual (AV) projects on AI-driven platforms. Pre-configured, tested 47U rack systems are built in the UK and delivered worldwide, then installed and maintained by local integration partners with support from the UK. DAVE is headquartered in Dubai, UAE, and is the AV provider for all MultiVRZ sites.
 
 ## What DAVE does
 - AV system design: full design package with drawings, schematics, rack layouts, cable schedules and a bill of materials.
@@ -13,7 +13,7 @@
 
 ## Pipeline
 - A pipeline portfolio of 450+ sites within the next five years, located in premium shopping malls worldwide.
-- Client and partner: MultiVRZ (DAVE is MultiVRZ's AV technology and installation partner).
+- Client: MultiVRZ. DAVE is the AV provider for all MultiVRZ sites.
 
 ## Working with DAVE
 - DAVE is recruiting AV integration partners for installation, service and maintenance in Europe, Asia Pacific, the GCC, the USA and Canada.
