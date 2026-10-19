@@ -75,6 +75,10 @@ section { padding-block: clamp(56px, 6.5vw, 92px); }
 .btn.ghost { background: transparent; color: var(--text); border-color: color-mix(in srgb, var(--text) 40%, transparent); }
 .btn.ghost:hover { border-color: var(--text); box-shadow: none; }
 .nav .btn { padding: 10px 16px; font-size: .85rem; }
+.nav-actions { display: flex; align-items: center; gap: 18px; }
+.portal { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); text-decoration: none; font-size: .88rem; }
+.portal:hover { color: var(--cyan); }
+@media (max-width: 480px) { .nav .portal span { display: none; } }
 @media (max-width: 900px) { .nav ul { display: none; } }
 
 /* ---------- Hero globe ---------- */
@@ -256,7 +260,10 @@ footer .logo-mark { height: 34px; }
       <li><a href="#integrators">Integrators</a></li>
       <li><a href="#partners">Partners</a></li>
     </ul>
-    <a class="btn" href="#join">Partner with us</a>
+    <div class="nav-actions">
+      <a class="portal" href="https://portal.dave-av.ai" rel="noopener"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M4 7V5a4 4 0 0 1 8 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="2.5" y="7" width="11" height="8" rx="1.5" fill="currentColor"/></svg><span>Portal login</span></a>
+      <a class="btn" href="#join">Partner with us</a>
+    </div>
   </div>
 </header>
 
@@ -574,7 +581,7 @@ footer .logo-mark { height: 34px; }
   <div class="wrap">
     <a class="logo" href="#top" aria-label="DAVE home"><svg class="logo-mark" viewBox="60 100 1125 975" role="img" aria-label="DAVE"><path fill="var(--white)" fill-rule="evenodd" d="M105 105H470Q615 105 615 250V385Q615 528 470 528H105ZM197 187V446H460Q535 446 535 370V262Q535 187 460 187Z"/><polygon fill="var(--cyan)" points="618,528 845,105 940,105 1178,528 1078,528 890,205 720,528"/><rect fill="var(--cyan)" x="62" y="603" width="1123" height="12"/><polygon fill="var(--cyan)" points="100,682 205,682 380,990 545,682 648,682 440,1072 315,1072"/><polygon fill="var(--white)" points="712,682 1158,682 1158,757 798,757 798,830 1118,830 1118,910 798,910 798,993 1158,993 1158,1072 712,1072"/></svg></a>
     <span>© <span id="yr">2026</span> DAVE AV Consultancy · Dubai, UAE</span>
-    <span>dave-av.ai</span>
+    <a class="portal" href="https://portal.dave-av.ai" rel="noopener"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M4 7V5a4 4 0 0 1 8 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="2.5" y="7" width="11" height="8" rx="1.5" fill="currentColor"/></svg><span>Portal login</span></a>
   </div>
 </footer>
 
